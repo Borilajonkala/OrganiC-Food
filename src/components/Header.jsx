@@ -37,9 +37,12 @@ const Header = () => {
 						</ul>
 					</div>
 				<div>
-					<div>
+					<div className='bg-#7EB693'>
 						<input type="text" className='w-[376px] h-[66px] rounded-4xl' />
 					<button><Search size={21} color='gray' /></button>
+					</div>
+					<div>
+
 					</div>
 				</div>
 				</div>
