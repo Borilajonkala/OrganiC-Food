@@ -16,8 +16,8 @@ const Header = () => {
 								<Link>Aboute</Link>
 							</li>
 							<li>
-								<details>
-									<summary>Pages</summary>
+								<details className='flex '>
+									<summary className=''>Pages</summary>
 									<Link>Aboute</Link>
 									<Link>Shop</Link>
 									<Link>Service</Link>

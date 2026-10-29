@@ -5,7 +5,7 @@ import Home from './pages/Home'
 const App = () => {
 	return (
 		<>
-			<div className='bg-white'>
+			<div className='bg-oqrang text-kok'>
 				<Header />
 				<Routes>
 					<Route path='/' element={<Home />} />
