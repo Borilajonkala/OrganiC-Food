@@ -1,16 +1,19 @@
 import { Route, Routes } from 'react-router-dom'
+import Header from './components/Header'
 import Home from './pages/Home'
 
 const App = () => {
-  return (
-    <div>
-      <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route />
-        
-      </Routes>
-    </div>
-  )
+	return (
+		<>
+			<div className='bg-oqrang text-kok'>
+				<Header />
+				<Routes>
+					<Route path='/' element={<Home />} />
+					<Route />
+				</Routes>
+			</div>
+		</>
+	)
 }
 
 export default App
