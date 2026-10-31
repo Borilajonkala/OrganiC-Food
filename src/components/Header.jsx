@@ -14,12 +14,12 @@ const Header = () => {
 								<Link to={"/"} className='font-bold text-[20px]'>Home</Link>
 							</li>
 							<li>
-								<Link className='font-bold text-[20px]'>Aboute</Link>
+							<Link to="/abaut">Aboute</Link>
 							</li>
 							<li>
 								<details className='flex flex-col  '>
 									<summary className='flex font-bold text-[20px]'>Pages</summary>
-									<Link className='font-bold text-[20px]'>Aboute</Link>
+									<Link to="/abaut">Aboute</Link>
 									<Link className='font-bold text-[20px]'>Shop</Link>
 									<Link className='font-bold text-[20px]'>Service</Link>
 									<Link className='font-bold text-[20px]'>Projects</Link>
