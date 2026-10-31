@@ -70,11 +70,12 @@ const Header = () => {
 								<li>
 									<Link className='font-bold text-[20px]' to={'shop'}>Shop</Link>
 								</li>
-								<li>
-									<Link className='font-bold text-[20px]'  >Projects</Link>
-								</li>
+							
 								<li>
 									<Link className='font-bold text-[20px] ' to={'/service'}>Service</Link>
+								</li>
+									<li>
+									<Link className='font-bold text-[20px]'  >Projects</Link>
 								</li>
 								<li>
 									<Link className='font-bold text-[20px]'  >News</Link>
