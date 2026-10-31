@@ -5,7 +5,7 @@ import Shop from './pages/Shop'
 import ShopSingle from './pages/ShopSingle'
 import BottomCom from './components/BottomCom'
 import Footer from './components/Footer'
-
+import Service from './pages/Service'
 const App = () => {
 	return (
 		<>
@@ -15,6 +15,7 @@ const App = () => {
 						<Route path='/' element={<Home />} />
 						<Route path='/shop' element={<Shop/>} />
 						<Route path='/shopsingle' element={<ShopSingle/>} />
+						<Route path='/service' element={<Service/>} />
 					</Routes>
 					<div className="container mx-auto p-4">
 						<BottomCom />
