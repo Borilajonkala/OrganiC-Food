@@ -8,18 +8,17 @@ import pomidor from '../assets/pomidor.png'
 const ShopSingle = () => {
     return (
         <main>
-            {/* Баннер сверху */}
+       
             <section>
                 <div>
                     <img src={banner} alt="Banner" className="w-full object-cover" />
                 </div>
             </section>
 
-            {/* Основной блок товара */}
+      
             <section className="py-12 px-6 max-w-7xl mx-auto">
                 <div className='flex flex-col lg:flex-row justify-between items-center gap-12'>
 
-                    {/* Картинка товара с тегом */}
                     <div className='relative bg-gray-50 rounded-3xl p-8 shadow-sm flex justify-center items-center'>
                         <span className='absolute top-6 left-6 bg-[#274c5b] text-white text-xs font-semibold px-3 py-1.5 rounded-lg'>
                             Millets
@@ -27,7 +26,7 @@ const ShopSingle = () => {
                         <img src={qe} alt="Health Pistachios" className='w-full max-w-md object-contain' />
                     </div>
 
-                    {/* Информация о товаре */}
+                 
                     <div className="flex flex-col gap-4 max-w-xl">
                         <h2 className="text-3xl font-bold text-[#274c5b]">Health Pistachios</h2>
 
@@ -59,7 +58,7 @@ const ShopSingle = () => {
                     </div>
                 </div>
 
-                {/* Блок переключения вкладок */}
+          
                 <div className="mt-16">
                     <div className="flex items-center gap-4 mt-4 justify-center">
                         <button className="btn bg-[#274c5b] hover:bg-[#1e3a45] text-white border-none px-6 py-2 rounded-xl flex items-center justify-center w-[249px] h-[42px] cursor-pointer">
@@ -77,17 +76,16 @@ const ShopSingle = () => {
                 </div>
             </section>
 
-            {/* Секция Related Products */}
             <section className="py-12 px-6 max-w-7xl mx-auto">
                 <div className='flex flex-col gap-12'>
                     <div className="text-center">
                         <h2 className="text-[50px] font-extrabold text-[#274c5b]">Related Products</h2>
                     </div>
 
-                    {/* Сетка карточек */}
+                 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
 
-                        {/* Карточка 1 */}
+                        
                         <div className="card bg-base-100 w-full shadow-sm border border-gray-100">
                             <figure className="bg-gray-50 p-4">
                                 <img src={broc} alt="Calabrese Broccoli" className="w-full h-48 object-contain" />
@@ -104,7 +102,7 @@ const ShopSingle = () => {
                             </div>
                         </div>
 
-                        {/* Карточка 2 */}
+                     
                         <div className="card bg-base-100 w-full shadow-sm border border-gray-100">
                             <figure className="bg-gray-50 p-4">
                                 <img src={banan} alt="Calabrese Broccoli" className="w-full h-48 object-contain" />
@@ -121,7 +119,7 @@ const ShopSingle = () => {
                             </div>
                         </div>
 
-                        {/* Карточка 3 */}
+                     
                         <div className="card bg-base-100 w-full shadow-sm border border-gray-100">
                             <figure className="bg-gray-50 p-4">
                                 <img src={or} alt="Calabrese Broccoli" className="w-full h-48 object-contain" />
@@ -138,7 +136,7 @@ const ShopSingle = () => {
                             </div>
                         </div>
 
-                        {/* Карточка 4 */}
+                       
                         <div className="card bg-base-100 w-full shadow-sm border border-gray-100">
                             <figure className="bg-gray-50 p-4">
                                 <img src={pomidor} alt="Calabrese Broccoli" className="w-full h-48 object-contain" />
