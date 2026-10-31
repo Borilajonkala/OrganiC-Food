@@ -17,8 +17,8 @@ const Header = () => {
 								<Link>Aboute</Link>
 							</li>
 							<li>
-								<details className='flex '>
-									<summary className=''>Pages</summary>
+								<details className='flex flex-col  '>
+									<summary className='flex'>Pages</summary>
 									<Link>Aboute</Link>
 									<Link>Shop</Link>
 									<Link>Service</Link>
