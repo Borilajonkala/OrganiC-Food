@@ -14,6 +14,7 @@ const App = () => {
 			<div className='bg-oqrang text-kok '>
 				<FetchProvider>
 					<Header />
+					<Quality/>
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/shop' element={<Shop/>} />
