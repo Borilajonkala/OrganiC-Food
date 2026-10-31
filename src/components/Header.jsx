@@ -7,33 +7,33 @@ const Header = () => {
 			<div>
 				<div className='container mx-auto p-4'>
 					<div className='flex justify-between py-10'>
-					<div className='flex items-center gap-20'>
+					<div className='flex items-center gap-5'>
 					<Link to={'/'}>	<img src={Img} alt='' /></Link>
 						<ul className='flex gap-[10px]'>
 							<li>
-								<Link to={"home"}>Home</Link>
+								<Link to={"/"} className='font-bold text-[20px]'>Home</Link>
 							</li>
 							<li>
-								<Link>Aboute</Link>
+								<Link className='font-bold text-[20px]'>Aboute</Link>
 							</li>
 							<li>
 								<details className='flex flex-col  '>
-									<summary className='flex'>Pages</summary>
-									<Link>Aboute</Link>
-									<Link>Shop</Link>
-									<Link>Service</Link>
-									<Link>Projects</Link>
-									<Link>News</Link>
+									<summary className='flex font-bold text-[20px]'>Pages</summary>
+									<Link className='font-bold text-[20px]'>Aboute</Link>
+									<Link className='font-bold text-[20px]'>Shop</Link>
+									<Link className='font-bold text-[20px]'>Service</Link>
+									<Link className='font-bold text-[20px]'>Projects</Link>
+									<Link className='font-bold text-[20px]'>News</Link>
 								</details>
 							</li>
 							<li>
-								<Link to={'shop'}>Shop</Link>
+								<Link  className='font-bold text-[20px]'  to={'shop'}>Shop</Link>
 							</li>
 							<li>
-								<Link>Projects</Link>
+								<Link className='font-bold text-[20px]'  >Projects</Link>
 							</li>
 							<li>
-								<Link>News</Link>
+								<Link className='font-bold text-[20px]'  >News</Link>
 							</li>
 						</ul>
 					</div>
