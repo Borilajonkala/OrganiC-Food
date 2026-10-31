@@ -2,6 +2,7 @@
 import { useSearchParams } from 'react-router-dom'
 import { useFetchContext } from '../Context/useFetchContext'
 import Pgg from '../assets/pgg.png'
+import Footer from '../components/Footer'
 
 const Shop = () => {
 	const { product, loading, error, refetch } = useFetchContext()
@@ -47,6 +48,7 @@ const Shop = () => {
 					</div>
 				)}
 			</div>
+      
 		</div>
 	)
 }

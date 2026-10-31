@@ -5,6 +5,7 @@ import Shop from './pages/Shop'
 import { FetchProvider } from './Context/FetchContext'
 import ShopSingle from './pages/ShopSingle'
 import BottomCom from './components/BottomCom'
+import Footer from './components/Footer'
 
 const App = () => {
 	return (
@@ -21,6 +22,7 @@ const App = () => {
 						<BottomCom />
 					</div>
 				</FetchProvider>
+				<Footer/>
 			</div>
 		</>
 	)
