@@ -11,7 +11,7 @@ const Header = () => {
 						<img src={Img} alt='' />
 						<ul className='flex gap-[10px]'>
 							<li>
-								<Link>Home</Link>
+								<Link to={"home"}>Home</Link>
 							</li>
 							<li>
 								<Link>Aboute</Link>
@@ -27,7 +27,7 @@ const Header = () => {
 								</details>
 							</li>
 							<li>
-								<Link>Shop</Link>
+								<Link to={'shop'}>Shop</Link>
 							</li>
 							<li>
 								<Link>Projects</Link>
