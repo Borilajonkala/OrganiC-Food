@@ -1,2 +1,14 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+@theme {
+	--color-kok: #274C5B;
+	--color-yashil: #7EB693;
+	--color-sariq: #EFD372;
+	--color-Ochkulrang: #D4D4D4;
+	--color-oqrang: #F9F8F8;
+	--color-sutrang: #EFF6F1;
+	--color-qorarang: #525C60
+}
+
