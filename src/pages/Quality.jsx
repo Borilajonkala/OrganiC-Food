@@ -20,21 +20,25 @@ const Quality = () => {
                 <p>t is a long established fact that a reader will be distracted by the readable content of a page when looking a layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
                 <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and auncover many web sites still in their infancy. Various versions have evolved over the years</p>
             </section>
-            <section className='flex items-center justify-center flex-col'>
+            <section className='flex items-center justify-center flex-col gap-[20px]'>
                 <div className='flex items-center jutify-center gap-[30px] '>
                     <img src={qol} alt="" />
-                    <div className='w-[900px] p'>
+                    <div className='w-[500px] '>
                         <h2 className='text-[#274C5B] text-2xl font-bold tracking-tight font-sans'>Why Organic</h2>
                         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptat. page editors now use Lorem Ipsum as their default model text, and auncover.</p>
                     </div>
                 </div>
-                <div className='flex items-center jutify-center gap-[30px] '>
+                <div className='flex items-center jutify-center gap-[30px] flex-row-reverse  '>
                     <img src={qol2} alt="" />
-                    <div className='w-[900px] p'>
+                    <div className='w-[500px] '>
                         <h2 className='text-[#274C5B] text-2xl font-bold tracking-tight font-sans'>Speciality Produce</h2>
                         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptat. page editors now use Lorem Ipsum as their default model text, and auncover.</p>
                     </div>
                 </div>
+            </section>
+            <section className='flex flex-col items-start justify-start  gap-[20px] ml-[370px] mr-[370px] mt-[50px] mb-[30px]'>
+            <h1 className='text-[#274C5B] text-4xl font-extrabold tracking-tight font-sans'>We farm your land</h1>
+            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking a layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
             </section>
         </div>
     );
