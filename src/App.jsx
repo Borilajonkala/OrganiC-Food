@@ -21,9 +21,10 @@ const App = () => {
 					</Routes>
 					<div className="container mx-auto p-4">
 						<BottomCom />
+						<Footer/>
 					</div>
 				</FetchProvider>
-				<Footer/>
+				
 			</div>
 		</>
 	)

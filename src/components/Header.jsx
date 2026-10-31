@@ -30,11 +30,12 @@ const Header = () => {
 								<Link  className='font-bold text-[20px]'  to={'shop'}>Shop</Link>
 							</li>
 							<li>
-								<Link className='font-bold text-[20px]'  >Projects</Link>
+								<Link className='font-bold text-[20px]' to={"/Portifig"}>Projects</Link>
 							</li>
 							<li>
 								<Link className='font-bold text-[20px]'  >News</Link>
 							</li>
+							
 						</ul>
 					</div>
 				<div className='flex gap-20 items-center'>
