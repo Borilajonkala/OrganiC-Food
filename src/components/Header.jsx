@@ -13,12 +13,12 @@ const Header = () => {
 								<Link>Home</Link>
 							</li>
 							<li>
-								<Link>Aboute</Link>
+							<Link to="/abaut">Aboute</Link>
 							</li>
 							<li>
 								<details className='flex '>
 									<summary className=''>Pages</summary>
-									<Link>Aboute</Link>
+									<Link to="/abaut">Aboute</Link>
 									<Link>Shop</Link>
 									<Link>Service</Link>
 									<Link>Projects</Link>
