@@ -1,10 +1,20 @@
+import { Star } from 'lucide-react'
 import Img from '../assets/bgGroundHome.png'
 import bgImgone from '../assets/bgimgone.png'
 import bgImgtwo from '../assets/bgimgtwo.png'
 import latterbox from '../assets/latterbox.svg'
 import leaf from '../assets/leaf.svg'
 import limon from '../assets/Limon.png'
+// rasmlar
+
+import { useFetchContext } from '../Context/useFetchContext'
+
 const Home = () => {
+	const { product, loading, error } = useFetchContext()
+	console.log(product);
+	// console.log(loading);
+	// console.log(error);
+
 	return (
 		<>
 			<div
@@ -76,7 +86,11 @@ const Home = () => {
 						</p>
 						<div className='w-[564px] flex flex-col gap-[30px] py-[46px]'>
 							<div className='flex gap-[19px] '>
-								<img src={leaf} className='bg-oqrang max-w-[101px] p-[25px] rounded-3xl' alt='' />
+								<img
+									src={leaf}
+									className='bg-oqrang max-w-[101px] p-[25px] rounded-3xl'
+									alt=''
+								/>
 								<div>
 									<h6 className='font-bold text-kok text-[25px]'>
 										Organic Foods Only
@@ -88,7 +102,11 @@ const Home = () => {
 								</div>
 							</div>
 							<div className='flex gap-[19px]'>
-								<img className='bg-oqrang max-w-[101px] p-[25px] rounded-3xl'  src={latterbox} alt='' />
+								<img
+									className='bg-oqrang max-w-[101px] p-[25px] rounded-3xl'
+									src={latterbox}
+									alt=''
+								/>
 								<div>
 									<h6 className='font-bold text-kok text-[25px]'>
 										Quality Standards
@@ -100,9 +118,48 @@ const Home = () => {
 								</div>
 							</div>
 						</div>
-						<button className='text-[20px] font-bold bg-kok rounded-3xl  w-[20%] h-[20%] text-oqrang'>
-							SHop Now
+						<button className='text-[20px] font-bold bg-kok rounded-3xl  w-[220px] h-[20%] text-oqrang'>
+							<p className='p-5'>Shop Now</p>
 						</button>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div className='container mx-auto p-4'>
+					<p className='text-center text-[36px] font-yellowtail text-yashil'>
+						Categories{' '}
+					</p>
+					<h3 className='text-center text-[50px] font-extrabold text-kok'>
+						Our Products
+					</h3>
+					<div className='flex flex-wrap items-center justify-center'>
+						{product.map(item => (
+							<div id={item.id} className='w-[335px] flex p-[30px] flex-col gap-2 items-center' >
+								<span></span>
+							<img className='h-[324px]' src={item.image} alt='' />
+								<h5>{item.title}</h5>
+								<div className="flex relative  gap-2 before:content-[''] before:block before:w-full before:h-[2px] before:bg-Ochkulrang before:absolute ">
+									<div className='flex'>
+									<p>$?</p>
+									<p>$?</p>
+								</div>
+								<div className='flex items-center gap-2'>
+									<div className='flex'>
+ {[1, 2, 3, 4, 5].map((star) => (
+      <Star
+        key={star}
+        size={18}
+        fill="#FFA500"
+        color="#FFA500"
+      />
+    ))}
+									</div>
+									<span>{item.Price}	</span>
+								</div>
+								</div>
+							</div>
+						))}
 					</div>
 				</div>
 			</div>
