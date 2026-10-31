@@ -8,7 +8,7 @@ const Header = () => {
 				<div className='container mx-auto p-4'>
 					<div className='flex justify-between py-10'>
 					<div className='flex items-center gap-20'>
-						<img src={Img} alt='' />
+					<Link to={'/'}>	<img src={Img} alt='' /></Link>
 						<ul className='flex gap-[10px]'>
 							<li>
 								<Link to={"home"}>Home</Link>
