@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Shop from './pages/Shop'
+import Service from './pages/Service'
 
 import { FetchProvider } from './Context/FetchContext'
 import ShopSingle from './pages/ShopSingle'
@@ -17,6 +18,7 @@ const App = () => {
 						<Route path='/' element={<Home />} />
 						<Route path='/shop' element={<Shop/>} />
 						<Route path='/shopsingle' element={<ShopSingle/>} />
+						<Route path='/service' element={<Service/>} />
 					</Routes>
 					<div className="container mx-auto p-4">
 						<BottomCom />
