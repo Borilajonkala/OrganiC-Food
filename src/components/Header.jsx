@@ -9,7 +9,7 @@ const Header = () => {
 					<div className='flex justify-between py-10'>
 					<div className='flex items-center gap-5'>
 					<Link to={'/'}>	<img src={Img} alt='' /></Link>
-						<ul className='flex gap-[10px]'>
+						<ul className='flex gap-[10px] '>
 							<li>
 								<Link to={"/"} className='font-bold text-[20px]'>Home</Link>
 							</li>
@@ -24,6 +24,7 @@ const Header = () => {
 									<Link className='font-bold text-[20px]'>Service</Link>
 									<Link className='font-bold text-[20px]'>Projects</Link>
 									<Link className='font-bold text-[20px]'>News</Link>
+									<Link to="/Quality">Quality </Link>
 								</details>
 							</li>
 							<li>
