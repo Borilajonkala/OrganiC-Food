@@ -17,7 +17,7 @@ const Header = () => {
 									<Link to={"/"} className='font-bold text-[20px]'>Home</Link>
 								</li>
 								<li>
-									<Link className='font-bold text-[20px]'>Aboute</Link>
+									<Link className='font-bold text-[20px]' to={'/about'}>Aboute</Link>
 								</li>
 						<li className="relative">
   <button
