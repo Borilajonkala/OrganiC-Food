@@ -12,7 +12,7 @@ const BottomCom = () => {
 					backgroundRepeat: 'no-repeat',
 				}}
 			>
-				<div className='flex items-center px-20 justify-between h-full'>
+				<div className='flex items-center px-20 justify-between h-full p-[50px]'>
 					<h5 className='text-[50px] text-oqrang w-[357px] font-bold'>
 						Subscribe to our Newsletter
 					</h5>
