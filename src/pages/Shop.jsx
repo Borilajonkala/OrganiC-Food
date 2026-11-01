@@ -1,7 +1,7 @@
 
 import { useSearchParams } from 'react-router-dom'
 import { useFetchContext } from '../Context/useFetchContext'
-import Pgg from '../assets/pgg.png'
+import Pagesss from '../assets/pgg.png'
 import Footer from '../components/Footer'
 
 const Shop = () => {
@@ -15,7 +15,7 @@ const Shop = () => {
 	return (
 		<div>
 			<img
-				src={Pgg}
+				src={Pagesss}
 				alt='Organik banner'
 				className='h-auto w-full object-cover'
 			/>

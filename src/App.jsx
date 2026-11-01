@@ -9,6 +9,7 @@ import Footer from './components/Footer'
 import Service from './pages/Service'
 import Quality from './pages/Quality'
 import About from './pages/About'
+import Portifig from './pages/Portifig'
 const App = () => {
 	return (
 		<>
@@ -23,6 +24,7 @@ const App = () => {
 						<Route path='/shopsingle' element={<ShopSingle />} />
 						<Route path='/quality' element={<Quality />} />
 						<Route path='/service' element={<Service />} />
+						<Route path="/projects" element={<Portifig />} />
 					</Routes>
 
 					<div className="container mx-auto p-4">
