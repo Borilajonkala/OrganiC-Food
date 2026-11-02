@@ -8,13 +8,22 @@ import limon from '../assets/Limon.png'
 // rasmlar
 
 import { useFetchContext } from '../Context/useFetchContext'
+import { Link, useSearchParams } from 'react-router-dom'
+
+
 
 const Home = () => {
 	const { product, loading, error } = useFetchContext()
 	console.log(product);
-	// console.log(loading);
-	// console.log(error);
+	  const [searchParams] = useSearchParams()
+	  const search = searchParams.get('search')?.trim().toLowerCase() ?? ''
+	console.log(loading);
+	console.log(error);
 
+
+	  const filteredProducts = product.filter(item =>
+    item.title.toLowerCase().includes(search),
+  )
 	return (
 		<>
 			<div
@@ -134,8 +143,10 @@ const Home = () => {
 						Our Products
 					</h3>
 					<div className='flex flex-wrap items-center justify-center'>
-						{product.map(item => (
-							<div id={item.id} className='w-[335px] flex p-[30px] flex-col gap-2 items-center' >
+						{filteredProducts.slice(0, 12).map(item => (
+
+							<Link to={`/home/shopsingle/${item.id}`}>
+								<div id={item.id} className='w-[335px] flex p-[30px] flex-col gap-2 items-center' >
 								<span></span>
 							<img className='h-[324px]' src={item.image} alt='' />
 								<h5>{item.title}</h5>
@@ -147,19 +158,20 @@ const Home = () => {
 								<div className='flex items-center gap-2'>
 									<div className='flex'>
  {[1, 2, 3, 4, 5].map((star) => (
-      <Star
-        key={star}
-        size={18}
-        fill="#FFA500"
-        color="#FFA500"
-      />
-    ))}
+	 <Star
+	 key={star}
+	 size={18}
+	 fill="#FFA500"
+	 color="#FFA500"
+	 />
+	))}
 									</div>
 									<span>{item.Price}	</span>
 								</div>
 								</div>
 							</div>
-						))}
+						</Link>
+					))}
 					</div>
 				</div>
 			</div>
