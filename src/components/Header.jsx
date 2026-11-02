@@ -80,6 +80,9 @@ const Header = () => {
 								<li>
 									<Link className='font-bold text-[20px]'  >News</Link>
 								</li>
+									<li>
+									<Link className='font-bold text-[20px]' to={"/quality"}  >Quality</Link>
+								</li>
 							</ul>
 						</div>
 						<div className='flex gap-20 items-center'>
