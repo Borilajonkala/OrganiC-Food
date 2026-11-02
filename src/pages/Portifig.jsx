@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Gggo from '../assets/Gggo.png'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, Link } from 'react-router-dom'
 import { useFetchContext } from '../Context/useFetchContext'
 
 const Portifig = () => {
@@ -16,14 +16,12 @@ const Portifig = () => {
 
   return (
     <div>
-      {/* Banner */}
       <img
         src={Gggo}
         alt="Organik banner"
         className="h-auto w-full object-cover"
       />
 
-      {/* Products */}
       <div className="container mx-auto mt-30 max-w-7xl px-4 py-6">
 
         {loading && <p>Loading products...</p>}
@@ -43,9 +41,10 @@ const Portifig = () => {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
             {filteredProducts.slice(0, 9).map((item) => (
-              <div
+              <Link
+                to={`/projects/${item.id}`}
                 key={item.id}
-                className="rounded-xl border bg-[#DEDDDD] p-4"
+                className="rounded-xl border bg-[#DEDDDD] p-4 block hover:shadow-lg transition"
               >
                 <img
                   src={item.image}
@@ -58,7 +57,7 @@ const Portifig = () => {
                 </h2>
 
                 <p>${item.Price}</p>
-              </div>
+              </Link>
             ))}
 
           </div>
