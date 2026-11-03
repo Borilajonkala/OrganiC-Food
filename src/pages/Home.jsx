@@ -7,24 +7,19 @@ import leaf from '../assets/leaf.svg'
 import limon from '../assets/Limon.png'
 // rasmlar
 
+import { Link } from 'react-router-dom'
 import { useFetchContext } from '../Context/useFetchContext'
-import { Link, useSearchParams } from 'react-router-dom'
-
-
 
 const Home = ({ search }) => {
-	const { product, loading, error } = useFetchContext()
-	console.log(product);
-	  const [searchParams] = useSearchParams()
-	
-	console.log(loading);
-	console.log(error);
+	const { farmersRes, productsRes, shopRes } = useFetchContext()
+	console.log(farmersRes)
 
+	console.log(shopRes)
+	console.log(productsRes)
 
-
-	  const filteredProducts = product.filter(item =>
-    item.title.toLowerCase().includes(search.toLowerCase()),
-  )
+	const filteredProduct = (productsRes || []).filter(item =>
+		item.title?.toLowerCase().includes((search || '').toLowerCase()),
+	)
 	return (
 		<>
 			<div
@@ -144,35 +139,37 @@ const Home = ({ search }) => {
 						Our Products
 					</h3>
 					<div className='flex flex-wrap items-center justify-center'>
-						{filteredProducts.slice(0, 12).map(item => (
-
+						{filteredProduct.slice(0, 12).map(item => (
 							<Link to={`/home/shopsingle/${item.id}`}>
-								<div id={item.id} className='w-[335px] flex p-[30px] flex-col gap-2 items-center' >
-								<span></span>
-							<img className='h-[324px]' src={item.image} alt='' />
-								<h5>{item.title}</h5>
-								<div className="flex relative  gap-2 before:content-[''] before:block before:w-full before:h-[2px] before:bg-Ochkulrang before:absolute ">
-									<div className='flex'>
-									<p>$?</p>
-									<p>$?</p>
-								</div>
-								<div className='flex items-center gap-2'>
-									<div className='flex'>
- {[1, 2, 3, 4, 5].map((star) => (
-	 <Star
-	 key={star}
-	 size={18}
-	 fill="#FFA500"
-	 color="#FFA500"
-	 />
-	))}
+								<div
+									id={item.id}
+									className='w-[335px] flex p-[30px] flex-col gap-2 items-center'
+								>
+									<span></span>
+									<img className='h-[324px]' src={item.image} alt='' />
+									<h5>{item.title}</h5>
+									<div className="flex relative  gap-2 before:content-[''] before:block before:w-full before:h-[2px] before:bg-Ochkulrang before:absolute ">
+										<div className='flex'>
+											<p>$?</p>
+											<p>$?</p>
+										</div>
+										<div className='flex items-center gap-2'>
+											<div className='flex'>
+												{[1, 2, 3, 4, 5].map(star => (
+													<Star
+														key={star}
+														size={18}
+														fill='#FFA500'
+														color='#FFA500'
+													/>
+												))}
+											</div>
+											<span>{item.Price} </span>
+										</div>
 									</div>
-									<span>{item.Price}	</span>
 								</div>
-								</div>
-							</div>
-						</Link>
-					))}
+							</Link>
+						))}
 					</div>
 				</div>
 			</div>

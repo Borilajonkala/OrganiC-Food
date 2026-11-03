@@ -1,9 +1,9 @@
-
 import { Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Shop from './pages/Shop'
 import ShopSingle from './pages/ShopSingle'
+import NotFound from './pages/NotFound'
 import BottomCom from './components/BottomCom'
 import Footer from './components/Footer'
 import Service from './pages/Service'
@@ -22,7 +22,7 @@ const App = () => {
 	return (
 		<>
 			<div className='bg-oqrang text-kok'>
-				<Header serach={search} setSearch={setSearch} />
+				<Header search={search} setSearch={setSearch} />
 
 					<Routes>
 						<Route path='/' element={<Home search={search} />} />
@@ -37,6 +37,7 @@ const App = () => {
 						<Route path='/ourteam' element={<Ourteam  search={search}/>} />
 								<Route path='/projects' element={<Portifig />} />
 					<Route path='/projects/:id' element={<ProductDetail />} />
+						<Route path='*' element={<NotFound/>} />
 				</Routes>
 
 				<div className='container mx-auto p-4'>

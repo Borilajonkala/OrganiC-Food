@@ -85,6 +85,7 @@ const Header = ({ search , setSearch }) => {
 						</div>
 					</div>
 				</div>
+				
 			</div>
 		</>
 	)
