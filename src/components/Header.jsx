@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { Search, ShoppingCart, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import Img from '../assets/Logo (2).svg'
-const Header = () => {
+const Header = ({ search , setSearch }) => {
 	const [open, setOpen] = useState(false)
 
 	return (
@@ -10,9 +10,9 @@ const Header = () => {
 			<div>
 				<div className='container mx-auto p-4'>
 					<div className='flex justify-between py-10'>
-						<div className='flex items-center gap-5'>
+						<div className='flex items-center gap-10'>
 							<Link to={'/'}>	<img src={Img} alt='' /></Link>
-							<ul className='flex gap-[10px]'>
+							<ul className='flex gap-[30px]'>
 								<li>
 									<Link to={"/"} className='font-bold text-[20px]'>Home</Link>
 								</li>
@@ -42,12 +42,6 @@ const Header = () => {
 												Shop
 											</Link>
 
-											<Link
-												to="/shopsingle"
-												className="font-bold text-[16px] hover:text-[#7EB693]"
-											>
-												Shop Single
-											</Link>
 
 											<Link
 												className="font-bold text-[16px] hover:text-[#7EB693]"
@@ -72,36 +66,16 @@ const Header = () => {
 												Projects
 											</Link>
 
-											<Link className="font-bold text-[16px] hover:text-[#7EB693]" to="/news">
-												News
-											</Link>
+											
 										</div>
 									)}
 								</li>
-								<li>
-									<Link className='font-bold text-[20px]' to={'shop'}>Shop</Link>
-								</li>
-
-								<li>
-									<Link className='font-bold text-[20px] ' to={'/service'}>Service</Link>
-								</li>
-								<li>
-									<Link className='font-bold text-[20px]'  >Projects</Link>
-								</li>
-								<li>
-									<Link className='font-bold text-[20px]'  >News</Link>
-								</li>
-								<li>
-									<Link className='font-bold text-[20px]' to={"/quality"}  >Quality</Link>
-								</li>
-								<li>
-									<Link className='font-bold text-[20px]' to={"/contact"}  >Conatcts</Link>
-								</li>
+								
 							</ul>
 						</div>
 						<div className='flex gap-20 items-center'>
 							<div className='bg-#7EB693 relative'>
-								<input type="text" className='w-[376px] h-[66px] rounded-4xl bg-[#FAFAFA] border-2 border-Ochkulrang pl-4 z-10 ' />
+								<input type="text" className='w-[376px] h-[66px] rounded-4xl bg-[#FAFAFA] border-2 border-Ochkulrang pl-4 z-10 ' value={search} onChange={(e) => setSearch(e.target.value)} />
 								<button className='rounded-full bg-yashil p-[20px] text-oqrang absolute right-[5px] top-[2.5px] z-0'><Search size={21} /></button>
 							</div>
 							<div className='flex gap-4 items-center border-2 border-Ochkulrang rounded-full pl-[3px] pr-[20px] py-[3px]'>

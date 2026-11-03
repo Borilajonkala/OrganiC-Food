@@ -12,17 +12,18 @@ import { Link, useSearchParams } from 'react-router-dom'
 
 
 
-const Home = () => {
+const Home = ({ search }) => {
 	const { product, loading, error } = useFetchContext()
 	console.log(product);
 	  const [searchParams] = useSearchParams()
-	  const search = searchParams.get('search')?.trim().toLowerCase() ?? ''
+	
 	console.log(loading);
 	console.log(error);
 
 
+
 	  const filteredProducts = product.filter(item =>
-    item.title.toLowerCase().includes(search),
+    item.title.toLowerCase().includes(search.toLowerCase()),
   )
 	return (
 		<>
@@ -34,14 +35,14 @@ const Home = () => {
 					backgroundRepeat: 'no-repeat',
 				}}
 			>
-				<div className='p-[300px] flex flex-col gap-2 '>
+				<div className='p-[200px] flex flex-col gap-2 '>
 					<p className='text-[36px] font-yellowtail text-yashil'>
 						100% Natural Food
 					</p>
 					<h1 className='text-kok w-[530px] text-[70px] font-extrabold'>
 						Choose the best healthier way of life
 					</h1>
-					<button className='bg-sariq  p-4 rounded-2xl text-[20px] font-bold w-[10%] active:bg-yellow-300 transition-all'>
+					<button className='bg-sariq  hover:bg-yellow-200 p-4 rounded-2xl text-[20px] font-bold w-[20%] active:bg-yellow-300 transition-all'>
 						Explore Now
 					</button>
 				</div>
@@ -127,7 +128,7 @@ const Home = () => {
 								</div>
 							</div>
 						</div>
-						<button className='text-[20px] font-bold bg-kok rounded-3xl  w-[220px] h-[20%] text-oqrang'>
+						<button className='text-[20px] font-bold bg-kok hover:bg-kokrangHover rounded-3xl  w-[220px] h-[20%] text-oqrang'>
 							<p className='p-5'>Shop Now</p>
 						</button>
 					</div>

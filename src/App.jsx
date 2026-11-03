@@ -14,15 +14,18 @@ import ProductDetail from './pages/ProductDetail'
 import Contacts from './pages/Contacts'
 import Licensens from './pages/Licensens'
 import Ourteam from './pages/Ourteam'
+import { useState } from 'react'
 
 const App = () => {
+	const [search , setSearch] = useState('')
+
 	return (
 		<>
 			<div className='bg-oqrang text-kok'>
-				<Header />
+				<Header serach={search} setSearch={setSearch} />
 
 					<Routes>
-						<Route path='/' element={<Home />} />
+						<Route path='/' element={<Home search={search} />} />
 						<Route path='/shop' element={<Shop/>} />
 						<Route path='/about' element={<About />} />
 						<Route path='/shop/shopsingle/:id' element={<ShopSingle />} />
