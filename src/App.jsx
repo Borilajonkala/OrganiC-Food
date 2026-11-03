@@ -6,6 +6,7 @@ import Service from './pages/Service'
 
 import { FetchProvider } from './Context/FetchContext'
 import ShopSingle from './pages/ShopSingle'
+import NotFound from './pages/NotFound'
 import BottomCom from './components/BottomCom'
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
 						<Route path='/shop' element={<Shop/>} />
 						<Route path='/shopsingle' element={<ShopSingle/>} />
 						<Route path='/service' element={<Service/>} />
+						<Route path='*' element={<NotFound/>} />
 					</Routes>
 					<div className="container mx-auto p-4">
 						<BottomCom />
