@@ -15,6 +15,54 @@
 		"price": 14.00 ,
 		"type": "Fresh",
 		"img": "/src/assets/rasm22.png"
-	}
+	},
+	{
+		"id": 3 ,
+		"title": "White Nuts",
+		"prevPrice": 20.00,
+		"price": 15.00 ,
+		"type": "Millets",
+		"img": "/src/assets/21.png"
+	},
+	{
+		"id": 4 ,
+		"title": "Vegan Red Tomato",
+		"prevPrice": 20.00,
+		"price": 17.00 ,
+		"type": "Vegetable",
+		"img": "/src/assets/20.png"
+	},
+	{
+		"id":  5,
+		"title": "Mung Bean",
+		"prevPrice": 20.00,
+		"price": 11.00 ,
+		"type": "Health",
+		"img": "/src/assets/rasm19.png"
+	},
+	{
+		"id":  6,
+		"title": "Brown Hazelnut",
+		"prevPrice": 20.00,
+		"price": 12.00 ,
+		"type": "Nuts",
+		"img": "/src/assets/rasm18.png"
+	},
+	{
+		"id": 7 ,
+		"title": "Eggs",
+		"prevPrice": 20.00,
+		"price": 17.00 ,
+		"type": "Fresh",
+		"img": "/src/assets/rasm17.png"
+	},
+	{
+		"id":  8,
+		"title": "Zelco Suji Elaichi Rusk",
+		"prevPrice": 20.00,
+		"price": 15.00 ,
+		"type": "Fresh",
+		"img": "/src/assets/rasm16.png"
+	},
 	]	
 }
