@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { useFetchContext } from '../Context/useFetchContext'
 import Pgg from '../assets/pgg.png'
 
+
 const Shop = () => {
   const { product, loading, error, refetch } = useFetchContext()
 
