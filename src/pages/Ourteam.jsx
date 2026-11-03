@@ -8,7 +8,7 @@ import KeiraImage from '../assets/Kira.jpg'
 import scottImage from '../assets/scott.jpg'
 import KarenImage from '../assets/Karen.jpg'
 
-const Ourteam = () => {
+const Ourteam = ({search}) => {
     return (
         <main>
             <section>

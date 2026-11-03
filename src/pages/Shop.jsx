@@ -4,12 +4,9 @@ import { useFetchContext } from '../Context/useFetchContext'
 import Pgg from '../assets/pgg.png'
 
 
-const Shop = () => {
+const Shop = ({search}) => {
   const { product, loading, error, refetch } = useFetchContext()
 
-  const [searchParams] = useSearchParams()
-  const search = searchParams.get('search')?.trim().toLowerCase() ?? ''
-	console.log(product);
 	
   const filteredProducts = product.filter(item =>
     item.title.toLowerCase().includes(search),

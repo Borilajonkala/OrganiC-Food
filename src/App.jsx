@@ -26,7 +26,7 @@ const App = () => {
 
 					<Routes>
 						<Route path='/' element={<Home search={search} />} />
-						<Route path='/shop' element={<Shop/>} />
+						<Route path='/shop' element={<Shop search={search}/>} />
 						<Route path='/about' element={<About />} />
 						<Route path='/shop/shopsingle/:id' element={<ShopSingle />} />
 						<Route path='/home/shopsingle/:id' element={<ShopSingle />} />
@@ -34,7 +34,7 @@ const App = () => {
 						<Route path='/service' element={<Service />} />
 						<Route path='/contact' element={<Contacts/>}/>
 						<Route path='/licensens' element={<Licensens />} />
-						<Route path='/ourteam' element={<Ourteam />} />
+						<Route path='/ourteam' element={<Ourteam  search={search}/>} />
 								<Route path='/projects' element={<Portifig />} />
 					<Route path='/projects/:id' element={<ProductDetail />} />
 					</Routes>
