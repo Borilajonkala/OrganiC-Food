@@ -11,6 +11,7 @@ import Quality from './pages/Quality'
 import About from './pages/About'
 import Portifig from './pages/Portifig'
 import ProductDetail from './pages/ProductDetail'
+import Licensens from './pages/Licensens'
 
 const App = () => {
 	return (
@@ -26,6 +27,7 @@ const App = () => {
 						<Route path='/home/shopsingle/:id' element={<ShopSingle />} />
 						<Route path='/quality' element={<Quality />} />
 						<Route path='/service' element={<Service />} />
+						<Route path='/licensens' element={<Licensens />} />
 								<Route path='/projects' element={<Portifig />} />
 					<Route path='/projects/:id' element={<ProductDetail />} />
 					</Routes>

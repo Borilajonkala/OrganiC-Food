@@ -3,7 +3,7 @@ import { Search, ShoppingCart, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import Img from '../assets/Logo (2).svg'
 const Header = () => {
-	const [open , setOpen] = useState(false)
+	const [open, setOpen] = useState(false)
 
 	return (
 		<>
@@ -19,68 +19,73 @@ const Header = () => {
 								<li>
 									<Link className='font-bold text-[20px]' to={'/about'}>Aboute</Link>
 								</li>
-						<li className="relative">
-  <button
-    onClick={() => setOpen(!open)}
-    className="flex items-center gap-1 font-bold text-[20px]"
-  >
-    Pages
-    <ChevronDown
-      size={18}
-      className={`transition-transform duration-300 ${
-        open ? 'rotate-180' : ''
-      }`}
-    />
-  </button>
+								<li className="relative">
+									<button
+										onClick={() => setOpen(!open)}
+										className="flex items-center gap-1 font-bold text-[20px]"
+									>
+										Pages
+										<ChevronDown
+											size={18}
+											className={`transition-transform duration-300 ${open ? 'rotate-180' : ''
+												}`}
+										/>
+									</button>
 
-  {open && (
-    <div className="absolute left-0 top-full z-50 mt-3 flex w-[200px] flex-col gap-2 rounded-xl bg-white p-4 shadow-lg">
-      <Link className="font-bold text-[16px] hover:text-[#7EB693]" to="/about">
-        About
-      </Link>
+									{open && (
+										<div className="absolute left-0 top-full z-50 mt-3 flex w-[200px] flex-col gap-2 rounded-xl bg-white p-4 shadow-lg">
+											<Link className="font-bold text-[16px] hover:text-[#7EB693]" to="/about">
+												About
+											</Link>
 
-      <Link className="font-bold text-[16px] hover:text-[#7EB693]" to="/shop">
-        Shop
-      </Link>
+											<Link className="font-bold text-[16px] hover:text-[#7EB693]" to="/shop">
+												Shop
+											</Link>
 
-      <Link
-        to="/shopsingle"
-        className="font-bold text-[16px] hover:text-[#7EB693]"
-      >
-        Shop Single
-      </Link>
+											<Link
+												to="/shopsingle"
+												className="font-bold text-[16px] hover:text-[#7EB693]"
+											>
+												Shop Single
+											</Link>
 
-      <Link
-        className="font-bold text-[16px] hover:text-[#7EB693]"
-        to="/service"
-      >
-        Service
-      </Link>
+											<Link
+												className="font-bold text-[16px] hover:text-[#7EB693]"
+												to="/service"
+											>
+												Service
+											</Link>
+											<Link
+												className="font-bold text-[16px] hover:text-[#7EB693]"
+												to="/licensens"
+											>
+												Licensens
+											</Link>
 
-      <Link className="font-bold text-[16px] hover:text-[#7EB693]" to="/projects">
-        Projects
-      </Link>
+											<Link className="font-bold text-[16px] hover:text-[#7EB693]" to="/projects">
+												Projects
+											</Link>
 
-      <Link className="font-bold text-[16px] hover:text-[#7EB693]" to="/news">
-        News
-      </Link>
-    </div>
-  )}
-</li>
+											<Link className="font-bold text-[16px] hover:text-[#7EB693]" to="/news">
+												News
+											</Link>
+										</div>
+									)}
+								</li>
 								<li>
 									<Link className='font-bold text-[20px]' to={'shop'}>Shop</Link>
 								</li>
-							
+
 								<li>
 									<Link className='font-bold text-[20px] ' to={'/service'}>Service</Link>
 								</li>
-									<li>
+								<li>
 									<Link className='font-bold text-[20px]'  >Projects</Link>
 								</li>
 								<li>
 									<Link className='font-bold text-[20px]'  >News</Link>
 								</li>
-									<li>
+								<li>
 									<Link className='font-bold text-[20px]' to={"/quality"}  >Quality</Link>
 								</li>
 							</ul>
