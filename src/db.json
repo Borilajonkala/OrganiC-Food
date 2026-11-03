@@ -1,20 +1,40 @@
 {
-	"product": [
-		{
-		"id": 1 ,
-		"title": "Calabrese Broccoli",
-		"prevPrice": 20.00,
-		"price": 13.00 ,
-		"type": "Vegetable",
-		"img": "/src/assets/rasm12.png"
-	},
-	{
-		"id": 2 ,
-		"title": "Fresh Banana Fruites",
-		"prevPrice": 20.00,
-		"price": 14.00 ,
-		"type": "Fresh",
-		"img": "/src/assets/rasm22.png"
-	}
-	]	
+  "farmers": [
+    {
+      "id": 1,
+      "name": "Giovani Bacardo",
+      "job": "Farmer",
+      "image": "/images/farmer.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Marianne Loreno",
+      "job": "Designer",
+      "image": "/images/designer.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Riga Pelore",
+      "job": "Farmer",
+      "image": "/images/riga.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Keira Knightley",
+      "job": "Farmer",
+      "image": "/images/keira.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Scott Lawrence",
+      "job": "Designer",
+      "image": "/images/scott.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Karen Allen",
+      "job": "Farmer",
+      "image": "/images/karen.jpg"
+    }
+  ]
 }

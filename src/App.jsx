@@ -11,12 +11,9 @@ import Quality from './pages/Quality'
 import About from './pages/About'
 import Portifig from './pages/Portifig'
 import ProductDetail from './pages/ProductDetail'
-<<<<<<< HEAD
 import Contacts from './pages/Contacts'
-=======
 import Licensens from './pages/Licensens'
 import Ourteam from './pages/Ourteam'
->>>>>>> f536eec46202bf3ed25e3a7c6b5f2801514212d6
 
 const App = () => {
 	return (
@@ -24,25 +21,22 @@ const App = () => {
 			<div className='bg-oqrang text-kok'>
 				<Header />
 
-					<Routes>
-						<Route path='/' element={<Home />} />
-						<Route path='/shop' element={<Shop/>} />
-						<Route path='/about' element={<About />} />
-						<Route path='/shop/shopsingle/:id' element={<ShopSingle />} />
-						<Route path='/home/shopsingle/:id' element={<ShopSingle />} />
-						<Route path='/quality' element={<Quality />} />
-						<Route path='/service' element={<Service />} />
-<<<<<<< HEAD
-						<Route path='/contact' element={<Contacts/>}/>
-=======
-						<Route path='/licensens' element={<Licensens />} />
-						<Route path='/ourteam' element={<Ourteam />} />
->>>>>>> f536eec46202bf3ed25e3a7c6b5f2801514212d6
-								<Route path='/projects' element={<Portifig />} />
+				<Routes>
+					<Route path='/' element={<Home />} />
+					<Route path='/shop' element={<Shop />} />
+					<Route path='/about' element={<About />} />
+					<Route path='/shop/shopsingle/:id' element={<ShopSingle />} />
+					<Route path='/home/shopsingle/:id' element={<ShopSingle />} />
+					<Route path='/quality' element={<Quality />} />
+					<Route path='/service' element={<Service />} />
+					<Route path='/contact' element={<Contacts />} />
+					<Route path='/licensens' element={<Licensens />} />
+					<Route path='/ourteam' element={<Ourteam />} />
+					<Route path='/projects' element={<Portifig />} />
 					<Route path='/projects/:id' element={<ProductDetail />} />
-					</Routes>
+				</Routes>
 
-				<div className="container mx-auto p-4">
+				<div className='container mx-auto p-4'>
 					<BottomCom />
 					<Footer />
 				</div>
