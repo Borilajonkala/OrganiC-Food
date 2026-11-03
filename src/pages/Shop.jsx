@@ -1,5 +1,5 @@
 
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link,  } from 'react-router-dom'
 import { useFetchContext } from '../Context/useFetchContext'
 import Pgg from '../assets/pgg.png'
 

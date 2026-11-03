@@ -37,9 +37,9 @@ const App = () => {
 						<Route path='/ourteam' element={<Ourteam  search={search}/>} />
 								<Route path='/projects' element={<Portifig />} />
 					<Route path='/projects/:id' element={<ProductDetail />} />
-					</Routes>
+				</Routes>
 
-				<div className="container mx-auto p-4">
+				<div className='container mx-auto p-4'>
 					<BottomCom />
 					<Footer />
 				</div>
