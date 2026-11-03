@@ -1,3 +1,20 @@
 {
-	
+	"product": [
+		{
+		"id": 1 ,
+		"title": "Calabrese Broccoli",
+		"prevPrice": 20.00,
+		"price": 13.00 ,
+		"type": "Vegetable",
+		"img": "/src/assets/rasm12.png"
+	},
+	{
+		"id": 2 ,
+		"title": "Fresh Banana Fruites",
+		"prevPrice": 20.00,
+		"price": 14.00 ,
+		"type": "Fresh",
+		"img": "/src/assets/rasm22.png"
+	}
+	]	
 }
