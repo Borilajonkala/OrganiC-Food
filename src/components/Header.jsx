@@ -61,6 +61,12 @@ const Header = () => {
 											>
 												Licensens
 											</Link>
+											<Link
+												className="font-bold text-[16px] hover:text-[#7EB693]"
+												to="/ourteam"
+											>
+												Our Team
+											</Link>
 
 											<Link className="font-bold text-[16px] hover:text-[#7EB693]" to="/projects">
 												Projects
