@@ -9,9 +9,7 @@ const ProductDetail = () => {
 
     const item = product?.find((e) => String(e.id) === id)
 
-    if (loading) return <h1>Loading...</h1>
-    if (error) return <h1>{error}</h1>
-    if (!item) return <h1>Product not found</h1>
+   
 
     return (
         <div className="container mx-auto p-10">
