@@ -94,6 +94,9 @@ const Header = () => {
 								<li>
 									<Link className='font-bold text-[20px]' to={"/quality"}  >Quality</Link>
 								</li>
+								<li>
+									<Link className='font-bold text-[20px]' to={"/contact"}  >Conatcts</Link>
+								</li>
 							</ul>
 						</div>
 						<div className='flex gap-20 items-center'>
