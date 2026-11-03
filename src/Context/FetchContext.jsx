@@ -1,57 +1,86 @@
+
 import { useState, useEffect, useCallback } from "react";
 import { FetchContext } from "./useFetchContext";
 
-export function FetchProvider({ children, url = "https://6ab4b2b624ee9d3caa1ba3fb.mockapi.io/Product" }) {
-	const [product, setProduct] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
-	const [reload, setReload] = useState(0);
+export function FetchProvider({ children }) {
+  const [farmers, setFarmers] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [shopProducts, setShopProducts] = useState([]);
 
-	useEffect(() => {
-		let isMounted = true;
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [reload, setReload] = useState(0);
 
-		const getProduct = async () => {
-			setLoading(true);
-			setError(null);
+  useEffect(() => {
+    let isMounted = true;
 
-			try {
-				const res = await fetch(url);
+    const getData = async () => {
+      setLoading(true);
+      setError(null);
 
-				if (!res.ok) {
-					throw new Error("Mahsulotlarni yuklashda xatolik");
-				}
+      try {
+        const [farmersRes, productsRes, shopRes] =
+          await Promise.all([
+            fetch("http://localhost:3000/farmers"),
+            fetch("http://localhost:3000/products"),
+            fetch("http://localhost:3000/shopProducts")
+          ]);
 
-				const data = await res.json();
+        const responses = [
+          farmersRes,
+          productsRes,
+          shopRes
+        ];
 
-				if (isMounted) {
-					setProduct(Array.isArray(data) ? data : (data.products ?? []));
-				}
-			} catch (err) {
-				if (isMounted) {
-					setProduct([]);
-					setError(err.message || "Noma'lum xatolik");
-				}
-			} finally {
-				if (isMounted) {
-					setLoading(false);
-				}
-			}
-		};
+        if (responses.some((res) => !res.ok)) {
+          throw new Error("API yuklashda xatolik!");
+        }
 
-		getProduct();
+        const [farmersData, productsData, shopData] =
+          await Promise.all(
+            responses.map((res) => res.json())
+          );
 
-		return () => {
-			isMounted = false;
-		};
-	}, [url, reload]);
+        if (isMounted) {
+          setFarmers(farmersData);
+          setProducts(productsData);
+          setShopProducts(shopData);
+        }
 
-	const refetch = useCallback(() => {
-		setReload((prev) => prev + 1);
-	}, []);
+      } catch (err) {
+        if (isMounted) {
+          setError(err.message || "Noma'lum xatolik");
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
 
-	return (
-		<FetchContext.Provider value={{ product, loading, error, refetch }}>
-			{children}
-		</FetchContext.Provider>
-	);
+    getData();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [reload]);
+
+  const refetch = useCallback(() => {
+    setReload((prev) => prev + 1);
+  }, []);
+
+  return (
+    <FetchContext.Provider
+      value={{
+        farmers,
+        products,
+        shopProducts,
+        loading,
+        error,
+        refetch
+      }}
+    >
+      {children}
+    </FetchContext.Provider>
+  );
 }

@@ -65,42 +65,192 @@
 		"img": "/src/assets/rasm16.png"
 	}
 	],	
+
   "farmers": [
     {
       "id": 1,
       "name": "Giovani Bacardo",
       "job": "Farmer",
-      "image": "/images/farmer.jpg"
+      "image": "/images/farmer.png"
     },
     {
       "id": 2,
       "name": "Marianne Loreno",
       "job": "Designer",
-      "image": "/images/designer.jpg"
+      "image": "/images/designer.png"
     },
     {
       "id": 3,
       "name": "Riga Pelore",
       "job": "Farmer",
-      "image": "/images/riga.jpg"
+      "image": "/images/riga.png"
     },
     {
       "id": 4,
       "name": "Keira Knightley",
       "job": "Farmer",
-      "image": "/images/keira.jpg"
+      "image": "/images/keira.png"
     },
     {
       "id": 5,
       "name": "Scott Lawrence",
       "job": "Designer",
-      "image": "/images/scott.jpg"
+      "image": "/images/scott.png"
     },
     {
       "id": 6,
       "name": "Karen Allen",
       "job": "Farmer",
-      "image": "/images/karen.jpg"
+      "image": "/images/karen.png"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Green & Tasty Lemon",
+      "category": "Fruits",
+      "image": "/images/lemon.png"
+    },
+    {
+      "id": 2,
+      "name": "Organic Carrot",
+      "category": "Vegetable",
+      "image": "/images/carrot.png"
+    },
+    {
+      "id": 3,
+      "name": "Organic Betel Leaf",
+      "category": "Leaf",
+      "image": "/images/leaf.png"
+    },
+    {
+      "id": 4,
+      "name": "Natural Tomato",
+      "category": "Fruits",
+      "image": "/images/tomato.png"
+    },
+    {
+      "id": 5,
+      "name": "Black Raspberry",
+      "category": "Fruits",
+      "image": "/images/raspberry.png"
+    },
+    {
+      "id": 6,
+      "name": "Honey Orange",
+      "category": "Fruits",
+      "image": "/images/orange.png"
+    }
+  ],
+  "shopProducts": [
+    {
+      "id": 1,
+      "name": "Calabrese Broccoli",
+      "category": "Vegetable",
+      "price": 13,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/broccoli.png"
+    },
+    {
+      "id": 2,
+      "name": "Fresh Banana Fruits",
+      "category": "Fresh",
+      "price": 14,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/banana.png"
+    },
+    {
+      "id": 3,
+      "name": "White Nuts",
+      "category": "Millets",
+      "price": 15,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/whitenuts.png"
+    },
+    {
+      "id": 4,
+      "name": "Vegan Red Tomato",
+      "category": "Vegetable",
+      "price": 17,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/redtomato.png"
+    },
+    {
+      "id": 5,
+      "name": "Mung Bean",
+      "category": "Health",
+      "price": 11,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/mungbean.png"
+    },
+    {
+      "id": 6,
+      "name": "Brown Hazelnut",
+      "category": "Nuts",
+      "price": 12,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/brownhazelnut.png"
+    },
+    {
+      "id": 7,
+      "name": "Eggs",
+      "category": "Fresh",
+      "price": 17,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/eggs.png"
+    },
+    {
+      "id": 8,
+      "name": "Zelco Suji Elaichi Rusk",
+      "category": "Fresh",
+      "price": 15,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/rusk.png"
+    },
+    {
+      "id": 9,
+      "name": "Mung Bean",
+      "category": "Health",
+      "price": 11,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/mungbean2.png"
+    },
+    {
+      "id": 10,
+      "name": "White Hazelnut",
+      "category": "Nuts",
+      "price": 12,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/whitehazelnut.png"
+    },
+    {
+      "id": 11,
+      "name": "Fresh Corn",
+      "category": "Fresh",
+      "price": 17,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/corn.png"
+    },
+    {
+      "id": 12,
+      "name": "Organic Almonds",
+      "category": "Fresh",
+      "price": 15,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/almonds.png"
     }
   ]
 }
+
