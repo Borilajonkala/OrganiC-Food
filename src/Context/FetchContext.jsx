@@ -3,7 +3,6 @@ import { useState, useEffect, useCallback } from "react";
 import { FetchContext } from "./useFetchContext";
 
 export function FetchProvider({ children }) {
-  const [product, setProduct] = useState([]);
   const [farmers, setFarmers] = useState([]);
   const [products, setProducts] = useState([]);
   const [shopProducts, setShopProducts] = useState([]);
@@ -20,20 +19,14 @@ export function FetchProvider({ children }) {
       setError(null);
 
       try {
-        const [
-          productRes,
-          farmersRes,
-          productsRes,
-          shopRes
-        ] = await Promise.all([
-          fetch("https://6ab4b2b624ee9d3caa1ba3fb.mockapi.io/Product"),
-          fetch("http://localhost:3000/farmers"),
-          fetch("http://localhost:3000/products"),
-          fetch("http://localhost:3000/shopProducts")
-        ]);
+        const [farmersRes, productsRes, shopRes] =
+          await Promise.all([
+            fetch("http://localhost:3000/farmers"),
+            fetch("http://localhost:3000/products"),
+            fetch("http://localhost:3000/shopProducts")
+          ]);
 
         const responses = [
-          productRes,
           farmersRes,
           productsRes,
           shopRes
@@ -43,22 +36,12 @@ export function FetchProvider({ children }) {
           throw new Error("API yuklashda xatolik!");
         }
 
-        const [
-          productData,
-          farmersData,
-          productsData,
-          shopData
-        ] = await Promise.all(
-          responses.map((res) => res.json())
-        );
-
-        if (isMounted) {
-          setProduct(
-            Array.isArray(productData)
-              ? productData
-              : productData.products ?? []
+        const [farmersData, productsData, shopData] =
+          await Promise.all(
+            responses.map((res) => res.json())
           );
 
+        if (isMounted) {
           setFarmers(farmersData);
           setProducts(productsData);
           setShopProducts(shopData);
@@ -89,7 +72,6 @@ export function FetchProvider({ children }) {
   return (
     <FetchContext.Provider
       value={{
-        product,
         farmers,
         products,
         shopProducts,
