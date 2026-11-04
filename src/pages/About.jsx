@@ -16,22 +16,23 @@ const About = () => {
 					<div>
 						<img src={Baner} alt='' />
 						<div className='flex items-center justify-around'>
-							<img className='w-[650px]' src={Image} alt='' />
+							<img className='w-162.5' src={Image} alt='' />
 							<div>
-								<h2 className='w-[674px] font-bold text-[50px]'>
+								<h2 className='w-168.5 font-bold text-[50px]'>
 									We do Creative Things for Success
 								</h2>
-								<p className='w-[671px] p-[40px]'>
+								<p className='w-167.75 p-10'>
 									Simply dummy text of the printing and typesetting industry.
 									Lorem had ceased to been the industry's standard dummy text
 									ever since the 1500s, when an unknown printer took a galle
 								</p>
-								<p className='w-[671px] p-[40px]'>
+								<p className='w-167.75
+								 p-10'>
 									Simply dummy text of the printing and typesetting industry.
 									Lorem had ceased to been the industry's standard dummy text
 									ever since the 1500s, when an unknown printer took a galley.
 								</p>
-								<button className='w-[230px] p-[28px] text-Ochkulrang bg-emerald-950 rounded-2xl'>
+								<button className='w-57.5 p-7 text-Ochkulrang bg-emerald-950 rounded-2xl'>
 									Explore More
 								</button>
 							</div>

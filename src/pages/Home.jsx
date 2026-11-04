@@ -11,15 +11,18 @@ import { Link } from 'react-router-dom'
 import { useFetchContext } from '../Context/useFetchContext'
 
 const Home = ({ search }) => {
-	const { farmersRes, productsRes, shopRes } = useFetchContext()
-	console.log(farmersRes)
+	const { product } = useFetchContext()
 
-	console.log(shopRes)
-	console.log(productsRes)
+	const query = (search || '').trim().toLowerCase()
 
-	const filteredProduct = (productsRes || []).filter(item =>
-		item.title?.toLowerCase().includes((search || '').toLowerCase()),
+	const filteredProduct = (product || []).filter(
+		item =>
+			item.title?.toLowerCase().includes(query) ||
+			item.category?.toLowerCase().includes(query),
 	)
+
+	console.log(product);
+	
 	return (
 		<>
 			<div
@@ -138,20 +141,22 @@ const Home = ({ search }) => {
 					<h3 className='text-center text-[50px] font-extrabold text-kok'>
 						Our Products
 					</h3>
-					<div className='flex flex-wrap items-center justify-center'>
+					<div className='flex flex-wrap items-center justify-center bg-oqrang gap-10 	'>
 						{filteredProduct.slice(0, 12).map(item => (
-							<Link to={`/home/shopsingle/${item.id}`}>
+							<Link key={item.id} to={`/home/shopsingle/${item.id}`}>
 								<div
 									id={item.id}
-									className='w-[335px] flex p-[30px] flex-col gap-2 items-center'
+									className='w-[335px] flex p-[30px] flex-col gap-2 items-center bg-gray-200 relative rounded-3xl'
 								>
-									<span></span>
+									<span className='absolute top-10 left-10 py-[5px] px-[12px] bg-kok text-oqrang rounded-[10px] font-semibold text-[15px]' >{item.category}</span>
 									<img className='h-[324px]' src={item.image} alt='' />
 									<h5>{item.title}</h5>
-									<div className="flex relative  gap-2 before:content-[''] before:block before:w-full before:h-[2px] before:bg-Ochkulrang before:absolute ">
-										<div className='flex'>
-											<p>$?</p>
-											<p>$?</p>
+									<div className="flex relative  gap-2 before:content-[''] before:block before:w-full before:h-0.5 before:bg-Ochkulrang before:absolute ">
+										<div className='flex gap-2'>
+											{item.oldPrice && (
+												<p className='line-through text-gray-400'>${item.oldPrice}</p>
+											)}
+											<p className='font-bold'>${item.price}</p>
 										</div>
 										<div className='flex items-center gap-2'>
 											<div className='flex'>
@@ -164,12 +169,14 @@ const Home = ({ search }) => {
 													/>
 												))}
 											</div>
-											<span>{item.Price} </span>
+											<span>{item.price} </span>
 										</div>
 									</div>
 								</div>
 							</Link>
 						))}
+
+					<button className='bg-kok hover:bg-kokrangHover text-[20px] text-oqrang font-bold py-[20px] px-[40px] rounded-3xl'><Link to>Load more</Link></button>
 					</div>
 				</div>
 			</div>

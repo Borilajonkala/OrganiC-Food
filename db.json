@@ -22,7 +22,7 @@
 		"prevPrice": 20.00,
 		"price": 15.00 ,
 		"type": "Millets",
-		"img": "/src/assets/21.png"
+		"img": "/src/assets/rasm21.png"
 	},
 	{
 		"id": 4 ,
@@ -30,7 +30,7 @@
 		"prevPrice": 20.00,
 		"price": 17.00 ,
 		"type": "Vegetable",
-		"img": "/src/assets/20.png"
+		"img": "/src/assets/rasm20.png"
 	},
 	{
 		"id":  5,
@@ -71,37 +71,37 @@
       "id": 1,
       "name": "Giovani Bacardo",
       "job": "Farmer",
-      "image": "/images/farmer.png"
+      "image": "/src/assets/farmer.jpg"
     },
     {
       "id": 2,
       "name": "Marianne Loreno",
       "job": "Designer",
-      "image": "/images/designer.png"
+      "image": "/src/assets/Mary.jpg"
     },
     {
       "id": 3,
       "name": "Riga Pelore",
       "job": "Farmer",
-      "image": "/images/riga.png"
+      "image": "/src/assets/riga.jpg"
     },
     {
       "id": 4,
       "name": "Keira Knightley",
       "job": "Farmer",
-      "image": "/images/keira.png"
+      "image": "/src/assets/Kira.jpg"
     },
     {
       "id": 5,
       "name": "Scott Lawrence",
       "job": "Designer",
-      "image": "/images/scott.png"
+      "image": "/src/assets/scott.jpg"
     },
     {
       "id": 6,
       "name": "Karen Allen",
       "job": "Farmer",
-      "image": "/images/karen.png"
+      "image": "/src/assets/Karen.jpg"
     }
   ],
   "products": [

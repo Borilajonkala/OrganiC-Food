@@ -7,9 +7,12 @@ import Pgg from '../assets/pgg.png'
 const Shop = ({search}) => {
   const { product, loading, error, refetch } = useFetchContext()
 
-	
-  const filteredProducts = product.filter(item =>
-    item.title.toLowerCase().includes(search),
+  const query = (search || '').trim().toLowerCase()
+
+  const filteredProducts = (product || []).filter(
+    item =>
+      item.title?.toLowerCase().includes(query) ||
+      item.category?.toLowerCase().includes(query),
   )
 
   return (
@@ -54,7 +57,7 @@ const Shop = ({search}) => {
                 />
 
                 <h2 className="mt-3 font-bold">{item.title}</h2>
-                <p>${item.Price}</p>
+                <p>${item.price}</p>
               </Link>
             ))}
 

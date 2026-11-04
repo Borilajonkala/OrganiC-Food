@@ -1,15 +1,22 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Search, ShoppingCart, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import Img from '../assets/Logo (2).svg'
 const Header = ({ search , setSearch }) => {
 	const [open, setOpen] = useState(false)
+	const navigate = useNavigate()
+
+
+	const handleSearch = (e) => {
+		e.preventDefault()
+		navigate('/shop')
+	}
 
 	return (
 		<>
-			<div>
-				<div className='container mx-auto p-4'>
-					<div className='flex justify-between py-10'>
+			<div className='sticky top-0 z-50 bg-oqrang'>
+				<div className='container mx-auto p-2 '>
+					<div className='flex justify-between  '>
 						<div className='flex items-center gap-10'>
 							<Link to={'/'}>	<img src={Img} alt='' /></Link>
 							<ul className='flex gap-[30px]'>
@@ -74,10 +81,10 @@ const Header = ({ search , setSearch }) => {
 							</ul>
 						</div>
 						<div className='flex gap-20 items-center'>
-							<div className='bg-#7EB693 relative'>
+							<form onSubmit={handleSearch} className='bg-#7EB693 relative'>
 								<input type="text" className='w-[376px] h-[66px] rounded-4xl bg-[#FAFAFA] border-2 border-Ochkulrang pl-4 z-10 ' value={search} onChange={(e) => setSearch(e.target.value)} />
-								<button className='rounded-full bg-yashil p-[20px] text-oqrang absolute right-[5px] top-[2.5px] z-0'><Search size={21} /></button>
-							</div>
+								<button type="submit" className='rounded-full bg-yashil p-[20px] text-oqrang absolute right-[5px] top-[2.5px] z-0'><Search size={21} /></button>
+							</form>
 							<div className='flex gap-4 items-center border-2 border-Ochkulrang rounded-full pl-[3px] pr-[20px] py-[3px]'>
 								<button className='rounded-full bg-kok p-5 text-oqrang'><ShoppingCart /></button>
 								<span className='text-[18px]'>Cart ({ })</span>

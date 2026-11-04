@@ -35,15 +35,17 @@ const App = () => {
 						<Route path='/contact' element={<Contacts/>}/>
 						<Route path='/licensens' element={<Licensens />} />
 						<Route path='/ourteam' element={<Ourteam  search={search}/>} />
-								<Route path='/projects' element={<Portifig />} />
+								<Route path='/projects' element={<Portifig search={search} />} />
 					<Route path='/projects/:id' element={<ProductDetail />} />
 						<Route path='*' element={<NotFound/>} />
 				</Routes>
 
-				<div className='container mx-auto p-4'>
-					<BottomCom />
-					<Footer />
+				<div className='container mx-auto p-4 '>
+					<div className='flex justify-center items-center'>
+							<BottomCom />
+					</div>
 				</div>
+					<Footer />
 			</div>
 		</>
 	)

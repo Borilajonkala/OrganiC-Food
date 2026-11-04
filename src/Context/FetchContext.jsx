@@ -1,83 +1,66 @@
-
-import { useState, useEffect, useCallback } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { FetchContext } from "./useFetchContext";
+import db from "../../db.json";
+
+const assetModules = import.meta.glob("../assets/*", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+
+const assetUrls = Object.entries(assetModules).reduce((acc, [path, url]) => {
+  acc[path.split("/").pop()] = url;
+  return acc;
+}, {});
+
+const resolveImage = (value) => {
+  if (!value) return "";
+  const fileName = String(value).split(/[\\/]/).pop();
+  return assetUrls[fileName] ?? value;
+};
+
+const normalizeProduct = (item) => ({
+  ...item,
+  title: item.title ?? item.name ?? "",
+  image: resolveImage(item.img ?? item.image ?? ""),
+  price: item.price ?? item.Price ?? 0,
+  oldPrice: item.prevPrice ?? item.oldPrice ?? null,
+  category: item.type ?? item.category ?? "",
+});
+
+const normalizeFarmer = (item) => ({
+  ...item,
+  name: item.name ?? "",
+  job: item.job ?? "",
+  image: resolveImage(item.image),
+});
 
 export function FetchProvider({ children }) {
-  const [farmers, setFarmers] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [shopProducts, setShopProducts] = useState([]);
+  const [data, setData] = useState(db);
 
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [reload, setReload] = useState(0);
+  const product = useMemo(
+    () => (data.product ?? []).map(normalizeProduct),
+    [data]
+  );
+  const farmers = useMemo(
+    () => (data.farmers ?? []).map(normalizeFarmer),
+    [data]
+  );
+  const products = data.products ?? [];
+  const shopProducts = data.shopProducts ?? [];
 
-  useEffect(() => {
-    let isMounted = true;
-
-    const getData = async () => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const [farmersRes, productsRes, shopRes] =
-          await Promise.all([
-            fetch("http://localhost:3000/farmers"),
-            fetch("http://localhost:3000/products"),
-            fetch("http://localhost:3000/shopProducts")
-          ]);
-
-        const responses = [
-          farmersRes,
-          productsRes,
-          shopRes
-        ];
-
-        if (responses.some((res) => !res.ok)) {
-          throw new Error("API yuklashda xatolik!");
-        }
-
-        const [farmersData, productsData, shopData] =
-          await Promise.all(
-            responses.map((res) => res.json())
-          );
-
-        if (isMounted) {
-          setFarmers(farmersData);
-          setProducts(productsData);
-          setShopProducts(shopData);
-        }
-
-      } catch (err) {
-        if (isMounted) {
-          setError(err.message || "Noma'lum xatolik");
-        }
-      } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    getData();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [reload]);
-
-  const refetch = useCallback(() => {
-    setReload((prev) => prev + 1);
-  }, []);
+  const refetch = useCallback(() => setData({ ...db }), []);
 
   return (
     <FetchContext.Provider
       value={{
+        product,
         farmers,
         products,
         shopProducts,
-        loading,
-        error,
-        refetch
+        loading: false,
+        error: null,
+        refetch,
       }}
     >
       {children}

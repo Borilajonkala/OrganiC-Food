@@ -1,5 +1,5 @@
 import banner from '../assets/banner.png'
-import qe from '../assets/qe.png'
+
 import broc from '../assets/broc.png'
 import banan from '../assets/banan.png'
 import or from '../assets/or.png'
@@ -8,13 +8,13 @@ import { useParams } from 'react-router-dom'
 import {  useFetchContext } from '../Context/useFetchContext'
 
 const ShopSingle = () => {
-    const { product , loading , error , refetch} = useFetchContext()
+    const { product , loading , error , } = useFetchContext()
     const { id } = useParams()
 
 
     
       const productID = product.find(
-        (item) => item.id === id
+        (item) => String(item.id) === id
     )
     console.log(productID);
     if (loading) return <p>Loading...</p>
@@ -55,8 +55,10 @@ const ShopSingle = () => {
                         </div>
 
                         <div className="flex items-center gap-4 text-xl font-bold">
-                            <span className="text-gray-400 line-through text-lg">$15.00</span>
-                            <span className="text-[#274c5b]">{productID.Price}</span>
+                            {productID.oldPrice && (
+                                <span className="text-gray-400 line-through text-lg">${productID.oldPrice}</span>
+                            )}
+                            <span className="text-[#274c5b]">{productID.price}</span>
                         </div>
 
                         <p className="text-gray-600 text-sm leading-relaxed">
@@ -84,7 +86,7 @@ const ShopSingle = () => {
                         <button className="btn bg-[#274c5b] hover:bg-[#1e3a45] text-white border-none px-6 py-2 rounded-xl flex items-center justify-center w-[249px] h-[42px] cursor-pointer">
                             Product Description
                         </button>
-                        <button className="btn bg-[#EFF6F1] hover:bg-[#e2ede5] text-black border-none w-[249px] h-[42px] rounded-xl cursor-pointer">
+                        <button className="btn bg-[#EFF6F1] hover:bg-[#e2ede5] text-black border-none w-62.25 h-10.5 rounded-xl cursor-pointer">
                             Additional Info
                         </button>
                     </div>

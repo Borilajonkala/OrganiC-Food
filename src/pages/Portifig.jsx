@@ -1,17 +1,17 @@
 
-import React from 'react'
 import Gggo from '../assets/Gggo.png'
-import { useSearchParams, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useFetchContext } from '../Context/useFetchContext'
 
-const Portifig = () => {
+const Portifig = ({ search }) => {
   const { product, loading, error, refetch } = useFetchContext()
 
-  const [searchParams] = useSearchParams()
-  const search = searchParams.get('search')?.trim().toLowerCase() ?? ''
+  const query = (search ?? '').trim().toLowerCase()
 
-  const filteredProducts = (product ?? []).filter((item) =>
-    item.title?.toLowerCase().includes(search)
+  const filteredProducts = (product ?? []).filter(
+    (item) =>
+      item.title?.toLowerCase().includes(query) ||
+      item.category?.toLowerCase().includes(query)
   )
 
   return (
@@ -56,7 +56,7 @@ const Portifig = () => {
                   {item.title}
                 </h2>
 
-                <p>${item.Price}</p>
+                <p>${item.price}</p>
               </Link>
             ))}
 
