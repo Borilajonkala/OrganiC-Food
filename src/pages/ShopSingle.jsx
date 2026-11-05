@@ -1,5 +1,8 @@
 import banner from '../assets/banner.png'
+<<<<<<< HEAD
+=======
 
+>>>>>>> f9e3ce1be26ba6bf2d7d27878a222113447fc490
 import broc from '../assets/broc.png'
 import banan from '../assets/banan.png'
 import or from '../assets/or.png'
@@ -10,6 +13,12 @@ import { useCart } from '../Context/CartContext'
 import { useState } from 'react'
 
 const ShopSingle = () => {
+<<<<<<< HEAD
+    const { shopProducts, loading, error } = useFetchContext()
+    const { id } = useParams()
+
+    const productID = (shopProducts ?? []).find(
+=======
     const { addToCart } = useCart()
     const [quantity, setQuantity] = useState(1)
     const { product , loading , error , } = useFetchContext()
@@ -18,9 +27,10 @@ const ShopSingle = () => {
 
     
       const productID = product.find(
+>>>>>>> f9e3ce1be26ba6bf2d7d27878a222113447fc490
         (item) => String(item.id) === id
     )
-    console.log(productID);
+
     if (loading) return <p>Loading...</p>
 
     if (error) return <p>Xatolik yuz berdi</p>
@@ -45,20 +55,48 @@ const ShopSingle = () => {
                  
                     <div className='relative bg-gray-50 rounded-3xl p-8 shadow-sm flex justify-center items-center'>
                         <span className='absolute top-6 left-6 bg-[#274c5b] text-white text-xs font-semibold px-3 py-1.5 rounded-lg'>
-                            Millets
+                            {productID.category}
                         </span>
                         <img src={productID.image} alt="Health Pistachios" className='w-full max-w-md object-contain' />
                     </div>
 
                  
                     <div className="flex flex-col gap-4 max-w-xl">
-                        <h2 className="text-3xl font-bold text-[#274c5b]">{productID.title}</h2>
+                        <h2 className="text-3xl font-bold text-[#274c5b]">{productID.name}</h2>
 
                         <div className="flex items-center gap-1 text-orange-400 text-sm">
-                            <span>★★★★★</span>
+                            <span>
+                                {"★".repeat(
+                                    Math.min(5, Math.max(0, Number(productID.rating) || 0))
+                                )}
+                            </span>
                         </div>
 
                         <div className="flex items-center gap-4 text-xl font-bold">
+<<<<<<< HEAD
+                            {Number(productID.oldPrice) > Number(productID.price) && (
+                                <span className="text-gray-400 line-through text-lg">
+                                    ${Number(productID.oldPrice).toFixed(2)}
+                                </span>
+                            )}
+                            <span className="text-[#274c5b]">
+                                ${Number(productID.price ?? 0).toFixed(2)}
+                            </span>
+                        </div>
+
+                        <div className="flex items-center gap-4 mt-4">
+                            <span className="font-semibold text-[#274c5b]">Quantity :</span>
+                            <input
+                                type="number"
+                                defaultValue="1"
+                                min="1"
+                                className="w-20 text-center border border-gray-300 rounded-xl py-2 px-3 focus:outline-none focus:border-[#274c5b]"
+                            />
+                            <button className="btn bg-[#274c5b] hover:bg-[#1e3a45] text-white border-none px-6 py-2 rounded-xl flex items-center gap-2 cursor-pointer">
+                                Add To Cart ➔
+                            </button>
+                        </div>
+=======
                             {productID.oldPrice && (
                                 <span className="text-gray-400 line-through text-lg">${productID.oldPrice}</span>
                             )}
@@ -94,6 +132,7 @@ const ShopSingle = () => {
     Add To Cart ➔
   </button>
 </div>
+>>>>>>> f9e3ce1be26ba6bf2d7d27878a222113447fc490
                     </div>
                 </div>
 
