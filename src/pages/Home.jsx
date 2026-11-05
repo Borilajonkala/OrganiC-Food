@@ -176,7 +176,7 @@ const Home = ({ search }) => {
 							</Link>
 						))}
 
-					<button className='bg-kok hover:bg-kokrangHover text-[20px] text-oqrang font-bold py-[20px] px-[40px] rounded-3xl'><Link to>Load more</Link></button>
+				<Link to={"/shop"}>	<button className='bg-kok hover:bg-kokrangHover text-[20px] text-oqrang font-bold py-[20px] px-[40px] rounded-3xl'></button></Link>
 					</div>
 				</div>
 			</div>
