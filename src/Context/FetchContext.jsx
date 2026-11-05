@@ -1,57 +1,108 @@
+
 import { useState, useEffect, useCallback } from "react";
 import { FetchContext } from "./useFetchContext";
 
-export function FetchProvider({ children, url = "https://6ab4b2b624ee9d3caa1ba3fb.mockapi.io/Product" }) {
-	const [product, setProduct] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
-	const [reload, setReload] = useState(0);
+export function FetchProvider({ children }) {
+  const [product, setProduct] = useState([]);
+  const [farmers, setFarmers] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [shopProducts, setShopProducts] = useState([]);
 
-	useEffect(() => {
-		let isMounted = true;
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState({});
+  const [reload, setReload] = useState(0);
 
-		const getProduct = async () => {
-			setLoading(true);
-			setError(null);
+  const getData = useCallback(async () => {
+    const urls = [
+      "https://6ab4b2b624ee9d3caa1ba3fb.mockapi.io/Product",
+      "http://localhost:3001/farmers",
+      "http://localhost:3001/products",
+      "http://localhost:3001/shopProducts"
+    ];
 
-			try {
-				const res = await fetch(url);
+    return await Promise.allSettled(
+      urls.map(async (url) => {
+        const res = await fetch(url);
 
-				if (!res.ok) {
-					throw new Error("Mahsulotlarni yuklashda xatolik");
-				}
+        if (!res.ok) {
+          throw new Error(`HTTP error: ${res.status}`);
+        }
 
-				const data = await res.json();
+        return await res.json();
+      })
+    );
+  }, []);
 
-				if (isMounted) {
-					setProduct(Array.isArray(data) ? data : (data.products ?? []));
-				}
-			} catch (err) {
-				if (isMounted) {
-					setProduct([]);
-					setError(err.message || "Noma'lum xatolik");
-				}
-			} finally {
-				if (isMounted) {
-					setLoading(false);
-				}
-			}
-		};
+  const applyResults = useCallback((results) => {
+    const setters = [
+      setProduct,
+      setFarmers,
+      setProducts,
+      setShopProducts
+    ];
 
-		getProduct();
+    const names = [
+      "product",
+      "farmers",
+      "products",
+      "shopProducts"
+    ];
 
-		return () => {
-			isMounted = false;
-		};
-	}, [url, reload]);
+    const failedRequests = {};
 
-	const refetch = useCallback(() => {
-		setReload((prev) => prev + 1);
-	}, []);
+    results.forEach((result, index) => {
+      if (result.status === "fulfilled") {
+        const data = result.value;
 
-	return (
-		<FetchContext.Provider value={{ product, loading, error, refetch }}>
-			{children}
-		</FetchContext.Provider>
-	);
+        const finalData = Array.isArray(data)
+          ? data
+          : data.products ?? [];
+
+        setters[index](finalData);
+      } else {
+        failedRequests[names[index]] = result.reason.message;
+      }
+    });
+
+    setErrors(failedRequests);
+    setError(failedRequests.product ?? null);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    let ignore = false;
+
+    getData().then((results) => {
+      if (!ignore) applyResults(results);
+    });
+
+    return () => {
+      ignore = true;
+    };
+  }, [getData, applyResults, reload]);
+
+  const refetch = useCallback(() => {
+    setLoading(true);
+    setError(null);
+    setErrors({});
+    setReload((prev) => prev + 1);
+  }, []);
+
+  return (
+    <FetchContext.Provider
+      value={{
+        product,
+        farmers,
+        products,
+        shopProducts,
+        loading,
+        error,
+        errors,
+        refetch
+      }}
+    >
+      {children}
+    </FetchContext.Provider>
+  );
 }

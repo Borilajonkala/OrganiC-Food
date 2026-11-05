@@ -1,11 +1,28 @@
 import banner from '../assets/banner.png'
-import qe from '../assets/qe.png'
 import broc from '../assets/broc.png'
 import banan from '../assets/banan.png'
 import or from '../assets/or.png'
 import pomidor from '../assets/pomidor.png'
+import { useParams } from 'react-router-dom'
+import {  useFetchContext } from '../Context/useFetchContext'
 
 const ShopSingle = () => {
+    const { product , loading , error } = useFetchContext()
+    const { id } = useParams()
+
+
+    
+      const productID = product.find(
+        (item) => item.id === id
+    )
+
+    if (loading) return <p>Loading...</p>
+
+    if (error) return <p>Xatolik yuz berdi</p>
+
+    if (!productID) return <p>Product topilmadi</p>
+
+
     return (
         <main>
        
@@ -18,29 +35,31 @@ const ShopSingle = () => {
       
             <section className="py-12 px-6 max-w-7xl mx-auto">
                 <div className='flex flex-col lg:flex-row justify-between items-center gap-12'>
+                       
 
+                 
                     <div className='relative bg-gray-50 rounded-3xl p-8 shadow-sm flex justify-center items-center'>
                         <span className='absolute top-6 left-6 bg-[#274c5b] text-white text-xs font-semibold px-3 py-1.5 rounded-lg'>
                             Millets
                         </span>
-                        <img src={qe} alt="Health Pistachios" className='w-full max-w-md object-contain' />
+                        <img src={productID.image} alt="Health Pistachios" className='w-full max-w-md object-contain' />
                     </div>
 
                  
                     <div className="flex flex-col gap-4 max-w-xl">
-                        <h2 className="text-3xl font-bold text-[#274c5b]">Health Pistachios</h2>
+                        <h2 className="text-3xl font-bold text-[#274c5b]">{productID.title}</h2>
 
                         <div className="flex items-center gap-1 text-orange-400 text-sm">
                             <span>★★★★★</span>
                         </div>
 
                         <div className="flex items-center gap-4 text-xl font-bold">
-                            <span className="text-gray-400 line-through text-lg">$20.00</span>
-                            <span className="text-[#274c5b]">$13.00</span>
+                            <span className="text-gray-400 line-through text-lg">$15.00</span>
+                            <span className="text-[#274c5b]">{productID.Price}</span>
                         </div>
 
                         <p className="text-gray-600 text-sm leading-relaxed">
-                            Simply dummy text of the printing and typesetting industry. Lorem had ceased to been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.
+                           {productID.desc}
                         </p>
 
                         <div className="flex items-center gap-4 mt-4">
@@ -157,7 +176,7 @@ const ShopSingle = () => {
                 </div>
             </section>
 
-          <section></section>
+        
         </main>
     )
 }

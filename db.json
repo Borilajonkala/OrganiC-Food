@@ -1,0 +1,189 @@
+
+{
+  "farmers": [
+    {
+      "id": 1,
+      "name": "Giovani Bacardo",
+      "job": "Farmer",
+      "image": "/images/farmer.png"
+    },
+    {
+      "id": 2,
+      "name": "Marianne Loreno",
+      "job": "Designer",
+      "image": "/images/designer.png"
+    },
+    {
+      "id": 3,
+      "name": "Riga Pelore",
+      "job": "Farmer",
+      "image": "/images/riga.png"
+    },
+    {
+      "id": 4,
+      "name": "Keira Knightley",
+      "job": "Farmer",
+      "image": "/images/keira.png"
+    },
+    {
+      "id": 5,
+      "name": "Scott Lawrence",
+      "job": "Designer",
+      "image": "/images/scott.png"
+    },
+    {
+      "id": 6,
+      "name": "Karen Allen",
+      "job": "Farmer",
+      "image": "/images/karen.png"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Green & Tasty Lemon",
+      "category": "Fruits",
+      "image": "https://tiimg.tistatic.com/fp/1/007/709/medium-size-round-shape-sour-tasty-indian-origin-commonly-cultivated-lemon-074.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Organic Carrot",
+      "category": "Vegetable",
+      "image": "https://cnt.farmerstoyou.com/spree/images/attachments/000/012/985/small/organic_carrots_1820.jpg?1672238963"
+    },
+    {
+      "id": 3,
+      "name": "Organic Betel Leaf",
+      "category": "Leaf",
+      "image": "https://www.greendna.in/cdn/shop/products/betels3_600x.webp?v=1668419996"
+    },
+    {
+      "id": 4,
+      "name": "Natural Tomato",
+      "category": "Fruits",
+      "image": "https://images-prod.healthline.com/hlcmsresource/images/AN_images/tomatoes-1296x728-feature.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Black Raspberry",
+      "category": "Fruits",
+      "image": "https://s3.amazonaws.com/YouGarden/Web/500x500/330015_1.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Honey Orange",
+      "category": "Fruits",
+      "image": "https://builtbybees.com/wp-content/uploads/2025/10/5-orange-blossom-honey-crystalization.jpg"
+    }
+  ],
+  "shopProducts": [
+    {
+      "id": 1,
+      "name": "Calabrese Broccoli",
+      "category": "Vegetable",
+      "price": 13,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/broccoli.png"
+    },
+    {
+      "id": 2,
+      "name": "Fresh Banana Fruits",
+      "category": "Fresh",
+      "price": 14,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/banana.png"
+    },
+    {
+      "id": 3,
+      "name": "White Nuts",
+      "category": "Millets",
+      "price": 15,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/whitenuts.png"
+    },
+    {
+      "id": 4,
+      "name": "Vegan Red Tomato",
+      "category": "Vegetable",
+      "price": 17,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/redtomato.png"
+    },
+    {
+      "id": 5,
+      "name": "Mung Bean",
+      "category": "Health",
+      "price": 11,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/mungbean.png"
+    },
+    {
+      "id": 6,
+      "name": "Brown Hazelnut",
+      "category": "Nuts",
+      "price": 12,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/brownhazelnut.png"
+    },
+    {
+      "id": 7,
+      "name": "Eggs",
+      "category": "Fresh",
+      "price": 17,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/eggs.png"
+    },
+    {
+      "id": 8,
+      "name": "Zelco Suji Elaichi Rusk",
+      "category": "Fresh",
+      "price": 15,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/rusk.png"
+    },
+    {
+      "id": 9,
+      "name": "Mung Bean",
+      "category": "Health",
+      "price": 11,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/mungbean2.png"
+    },
+    {
+      "id": 10,
+      "name": "White Hazelnut",
+      "category": "Nuts",
+      "price": 12,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/whitehazelnut.png"
+    },
+    {
+      "id": 11,
+      "name": "Fresh Corn",
+      "category": "Fresh",
+      "price": 17,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/corn.png"
+    },
+    {
+      "id": 12,
+      "name": "Organic Almonds",
+      "category": "Fresh",
+      "price": 15,
+      "oldPrice": 20,
+      "rating": 5,
+      "image": "/images/almonds.png"
+    }
+  ]
+}

@@ -7,10 +7,10 @@ import './index.css'
 
 createRoot(document.getElementById('root')).render(
 	<StrictMode>
-		<BrowserRouter>
-			<FetchProvider>
-				<App />
-			</FetchProvider>
-		</BrowserRouter>
-	</StrictMode>,
+  <BrowserRouter>
+    <FetchProvider>
+      <App />
+    </FetchProvider>
+  </BrowserRouter>
+</StrictMode>
 )

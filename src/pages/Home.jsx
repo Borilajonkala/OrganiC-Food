@@ -8,13 +8,19 @@ import limon from '../assets/Limon.png'
 // rasmlar
 
 import { useFetchContext } from '../Context/useFetchContext'
+import { Link, useSearchParams } from 'react-router-dom'
+
+
 
 const Home = () => {
 	const { product, loading, error } = useFetchContext()
-	console.log(product);
-	// console.log(loading);
-	// console.log(error);
+	  const [searchParams] = useSearchParams()
+	  const search = searchParams.get('search')?.trim().toLowerCase() ?? ''
 
+
+	  const filteredProducts = product.filter(item =>
+    item.title?.toLowerCase().includes(search),
+  )
 	return (
 		<>
 			<div
@@ -133,33 +139,41 @@ const Home = () => {
 					<h3 className='text-center text-[50px] font-extrabold text-kok'>
 						Our Products
 					</h3>
+					{loading && <p role="status" className='text-center'>Loading products...</p>}
+
+					{error && <p role="alert" className='text-center'>{error}</p>}
+
+					{!loading && !error && filteredProducts.length === 0 && (
+						<p className='text-center'>No products found.</p>
+					)}
+
 					<div className='flex flex-wrap items-center justify-center'>
-						{product.map(item => (
-							<div id={item.id} className='w-[335px] flex p-[30px] flex-col gap-2 items-center' >
-								<span></span>
-							<img className='h-[324px]' src={item.image} alt='' />
+						{!loading && !error && filteredProducts.slice(0, 12).map(item => (
+
+							<Link key={item.id} to={`/home/shopsingle/${item.id}`}>
+								<div id={item.id} className='w-[335px] flex p-[30px] flex-col gap-2 items-center' >
+								<img className='h-[324px]' src={item.image} alt='' />
 								<h5>{item.title}</h5>
 								<div className="flex relative  gap-2 before:content-[''] before:block before:w-full before:h-[2px] before:bg-Ochkulrang before:absolute ">
 									<div className='flex'>
-									<p>$?</p>
-									<p>$?</p>
-								</div>
+										<p>${item.Price}</p>
+									</div>
 								<div className='flex items-center gap-2'>
 									<div className='flex'>
  {[1, 2, 3, 4, 5].map((star) => (
-      <Star
-        key={star}
-        size={18}
-        fill="#FFA500"
-        color="#FFA500"
-      />
-    ))}
+	 <Star
+	 key={star}
+	 size={18}
+	 fill="#FFA500"
+	 color="#FFA500"
+	 />
+	))}
 									</div>
-									<span>{item.Price}	</span>
 								</div>
 								</div>
 							</div>
-						))}
+						</Link>
+					))}
 					</div>
 				</div>
 			</div>
