@@ -2,10 +2,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Search, ShoppingCart, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import Img from '../assets/Logo (2).svg'
+import { useCart } from '../Context/CartContext'
 const Header = ({ search , setSearch }) => {
 	const [open, setOpen] = useState(false)
 	const navigate = useNavigate()
-
+  const { cartCount } = useCart()
 
 	const handleSearch = (e) => {
 		e.preventDefault()
@@ -85,10 +86,18 @@ const Header = ({ search , setSearch }) => {
 								<input type="text" className='w-[376px] h-[66px] rounded-4xl bg-[#FAFAFA] border-2 border-Ochkulrang pl-4 z-10 ' value={search} onChange={(e) => setSearch(e.target.value)} />
 								<button type="submit" className='rounded-full bg-yashil p-[20px] text-oqrang absolute right-[5px] top-[2.5px] z-0'><Search size={21} /></button>
 							</form>
-							<div className='flex gap-4 items-center border-2 border-Ochkulrang rounded-full pl-[3px] pr-[20px] py-[3px]'>
-								<button className='rounded-full bg-kok p-5 text-oqrang'><ShoppingCart /></button>
-								<span className='text-[18px]'>Cart ({ })</span>
-							</div>
+						<Link
+  to="/cart"
+  className="flex gap-4 items-center border-2 border-Ochkulrang rounded-full pl-[3px] pr-[20px] py-[3px]"
+>
+  <span className="rounded-full bg-kok p-5 text-oqrang">
+    <ShoppingCart />
+  </span>
+
+  <span className="text-[18px]">
+    Cart ({cartCount})
+  </span>
+</Link>
 						</div>
 					</div>
 				</div>

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "aos": "^2.3.4",
     "axios": "^1.21.0",
     "daisyui": "^5.7.50",
     "lucide-react": "^1.66.0",

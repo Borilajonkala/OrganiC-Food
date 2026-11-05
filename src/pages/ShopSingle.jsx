@@ -6,8 +6,12 @@ import or from '../assets/or.png'
 import pomidor from '../assets/pomidor.png'
 import { useParams } from 'react-router-dom'
 import {  useFetchContext } from '../Context/useFetchContext'
+import { useCart } from '../Context/CartContext'
+import { useState } from 'react'
 
 const ShopSingle = () => {
+    const { addToCart } = useCart()
+    const [quantity, setQuantity] = useState(1)
     const { product , loading , error , } = useFetchContext()
     const { id } = useParams()
 
@@ -65,18 +69,31 @@ const ShopSingle = () => {
                            {productID.desc}
                         </p>
 
-                        <div className="flex items-center gap-4 mt-4">
-                            <span className="font-semibold text-[#274c5b]">Quantity :</span>
-                            <input
-                                type="number"
-                                defaultValue="1"
-                                min="1"
-                                className="w-20 text-center border border-gray-300 rounded-xl py-2 px-3 focus:outline-none focus:border-[#274c5b]"
-                            />
-                            <button className="btn bg-[#274c5b] hover:bg-[#1e3a45] text-white border-none px-6 py-2 rounded-xl flex items-center gap-2 cursor-pointer">
-                                Add To Cart ➔
-                            </button>
-                        </div>
+                      <div className="flex items-center gap-4 mt-4">
+  <span className="font-semibold text-[#274c5b]">
+    Quantity:
+  </span>
+
+  <input
+    type="number"
+    min="1"
+    step="1"
+    value={quantity}
+    onChange={e => setQuantity(e.target.value)}
+    className="w-20 text-center border border-gray-300 rounded-xl py-2 px-3 focus:outline-none focus:border-[#274c5b]"
+  />
+
+  <button
+    type="button"
+    onClick={() => addToCart(productID, quantity)}
+    disabled={
+      !Number.isInteger(Number(quantity)) || Number(quantity) < 1
+    }
+    className="btn bg-[#274c5b] hover:bg-[#1e3a45] text-white border-none px-6 py-2 rounded-xl flex items-center gap-2 cursor-pointer disabled:opacity-50"
+  >
+    Add To Cart ➔
+  </button>
+</div>
                     </div>
                 </div>
 

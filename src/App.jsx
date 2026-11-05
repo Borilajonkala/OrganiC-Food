@@ -15,6 +15,7 @@ import Contacts from './pages/Contacts'
 import Licensens from './pages/Licensens'
 import Ourteam from './pages/Ourteam'
 import { useState } from 'react'
+import Cart from './pages/Cart'
 
 const App = () => {
 	const [search , setSearch] = useState('')
@@ -26,6 +27,7 @@ const App = () => {
 
 					<Routes>
 						<Route path='/' element={<Home search={search} />} />
+						<Route path='/cart' element={<Cart />}/>
 						<Route path='/shop' element={<Shop search={search}/>} />
 						<Route path='/about' element={<About />} />
 						<Route path='/shop/shopsingle/:id' element={<ShopSingle />} />
@@ -38,6 +40,10 @@ const App = () => {
 								<Route path='/projects' element={<Portifig search={search} />} />
 					<Route path='/projects/:id' element={<ProductDetail />} />
 						<Route path='*' element={<NotFound/>} />
+						{/* db json bitsa ulansa boldi */}
+						<Route path='/organicfood' />
+						<Route path='/organicjuice' />
+						<Route path='/nutscookis' />
 				</Routes>
 
 				<div className='container mx-auto p-4 '>
