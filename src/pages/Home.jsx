@@ -133,7 +133,7 @@ const Home = ({ search }) => {
 				</div>
 			</div>
 
-			<div>
+			<div className='mb-[400px] bg-white'>
 				<div className='container mx-auto p-4'>
 					<p className='text-center text-[36px] font-yellowtail text-yashil'>
 						Categories{' '}
@@ -141,12 +141,12 @@ const Home = ({ search }) => {
 					<h3 className='text-center text-[50px] font-extrabold text-kok'>
 						Our Products
 					</h3>
-					<div className='flex flex-wrap items-center justify-center bg-oqrang gap-10 	'>
+					<div className='flex flex-wrap items-center justify-center bg-white gap-10 	'>
 						{filteredProduct.slice(0, 12).map(item => (
 							<Link key={item.id} to={`/home/shopsingle/${item.id}`}>
 								<div
 									id={item.id}
-									className='w-[335px] flex p-[30px] flex-col gap-2 items-center bg-gray-200 relative rounded-3xl'
+									className='w-[335px] flex p-[30px] flex-col gap-2 items-center bg-[#F9F8F8] relative rounded-3xl'
 								>
 									<span className='absolute top-10 left-10 py-[5px] px-[12px] bg-kok text-oqrang rounded-[10px] font-semibold text-[15px]' >{item.category}</span>
 									<img className='h-[324px]' src={item.image} alt='' />
@@ -169,16 +169,69 @@ const Home = ({ search }) => {
 													/>
 												))}
 											</div>
-											<span>{item.price} </span>
+							
 										</div>
 									</div>
 								</div>
 							</Link>
 						))}
 
-				<Link to={"/shop"}>	<button className='bg-kok hover:bg-kokrangHover text-[20px] text-oqrang font-bold py-[20px] px-[40px] rounded-3xl'></button></Link>
+				<Link to={"/about"}>	<button className='bg-kok hover:bg-kokrangHover text-[20px] text-oqrang font-bold py-[20px] px-[40px] rounded-3xl'>Load More </button></Link>
 					</div>
 				</div>
+			</div>
+
+			<div className='bg-kok ]'>
+				<div className="container mx-auto p-4">
+						<div className='flex justify-between items-center'>
+							<div className='flex flex-col gap-[8px] '>
+								<p className='font-yellowtail text-[36px] text-yashil'>Offer</p>
+								<h3 className='capitalize text-oqrang font-extrabold text-[50px]'>We offer organic for you</h3>
+							</div>
+							<button className='text-kok py-[28px] bg-sariq rounded-3xl w-[256px] text-[20px] font-bold'>View All Product</button>
+						</div>
+						<div className='flex  gap-20 mt-[100px] mb-[200px]'>
+							{filteredProduct.slice(0, 4).map(item => (
+							<Link key={item.id} to={`/home/shopsingle/${item.id}`}>
+								<div
+									id={item.id}
+									className='w-[335px] flex p-[30px] flex-col gap-2 items-center bg-[#F9F8F8] relative rounded-3xl'
+								>
+									<span className='absolute top-10 left-10 py-[5px] px-[12px] bg-kok text-oqrang rounded-[10px] font-semibold text-[15px]' >{item.category}</span>
+									<img className='h-[324px]' src={item.image} alt='' />
+									<h5>{item.title}</h5>
+									<div className="flex relative    gap-2 before:content-[''] before:block before:w-full before:h-0.5 before:bg-Ochkulrang before:absolute ">
+									
+										<div className='flex gap-2 '>
+											{item.oldPrice && (
+												<p className='line-through text-gray-400'>${item.oldPrice}</p>
+											)}
+											<p className='font-bold'>${item.price}</p>
+										</div>
+										<div className='flex items-center gap-2'>
+											<div className='flex'>
+												{[1, 2, 3, 4, 5].map(star => (
+													<Star
+														key={star}
+														size={18}
+														fill='#FFA500'
+														color='#FFA500'
+													/>
+												))}
+											</div>
+				
+										</div>
+									</div>
+								</div>
+							</Link>
+						))}	
+						</div>
+						</div>
+			</div>
+
+
+			<div>
+				
 			</div>
 		</>
 	)
