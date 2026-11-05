@@ -18,7 +18,7 @@ const BottomCom = () => {
 					</h5>
 					<div className='flex gap-2'>
 						<input type='email' className='py-[40px] pl-[23px] border-none bg-oqrang rounded-3xl pr-[174px] ' placeholder='Enter Your Email' />
-						<button className='text-[20px] text-oqrang bg-kok rounded-3xl py-[28px] px-[64px]'>
+						<button className='text-[20px] text-oqrang bg-kok hover:bg-kokrangHover rounded-3xl py-[28px] px-[64px]'>
 							Subscribe
 						</button>
 					</div>

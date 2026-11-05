@@ -5,11 +5,11 @@ import { useFetchContext } from '../Context/useFetchContext'
 const ProductDetail = () => {
     const { id } = useParams()
 
-    const { product, loading, error } = useFetchContext()
+    const { product,  } = useFetchContext()
 
     const item = product?.find((e) => String(e.id) === id)
 
-   
+    if (!item) return <p className="container mx-auto p-10">Product topilmadi</p>
 
     return (
         <div className="container mx-auto p-10">
@@ -27,7 +27,7 @@ const ProductDetail = () => {
                     </h1>
 
                     <p className="text-xl mt-4">
-                        ${item.Price}
+                        ${item.price}
                     </p>
 
                     <p className="mt-4">

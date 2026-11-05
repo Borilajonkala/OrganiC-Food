@@ -1,57 +1,69 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { FetchContext } from "./useFetchContext";
+import db from "../../db.json";
 
-export function FetchProvider({ children, url = "https://6ab4b2b624ee9d3caa1ba3fb.mockapi.io/Product" }) {
-	const [product, setProduct] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
-	const [reload, setReload] = useState(0);
+const assetModules = import.meta.glob("../assets/*", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
 
-	useEffect(() => {
-		let isMounted = true;
+const assetUrls = Object.entries(assetModules).reduce((acc, [path, url]) => {
+  acc[path.split("/").pop()] = url;
+  return acc;
+}, {});
 
-		const getProduct = async () => {
-			setLoading(true);
-			setError(null);
+const resolveImage = (value) => {
+  if (!value) return "";
+  const fileName = String(value).split(/[\\/]/).pop();
+  return assetUrls[fileName] ?? value;
+};
 
-			try {
-				const res = await fetch(url);
+const normalizeProduct = (item) => ({
+  ...item,
+  title: item.title ?? item.name ?? "",
+  image: resolveImage(item.img ?? item.image ?? ""),
+  price: item.price ?? item.Price ?? 0,
+  oldPrice: item.prevPrice ?? item.oldPrice ?? null,
+  category: item.type ?? item.category ?? "",
+});
 
-				if (!res.ok) {
-					throw new Error("Mahsulotlarni yuklashda xatolik");
-				}
+const normalizeFarmer = (item) => ({
+  ...item,
+  name: item.name ?? "",
+  job: item.job ?? "",
+  image: resolveImage(item.image),
+});
 
-				const data = await res.json();
+export function FetchProvider({ children }) {
+  const [data, setData] = useState(db);
 
-				if (isMounted) {
-					setProduct(Array.isArray(data) ? data : (data.products ?? []));
-				}
-			} catch (err) {
-				if (isMounted) {
-					setProduct([]);
-					setError(err.message || "Noma'lum xatolik");
-				}
-			} finally {
-				if (isMounted) {
-					setLoading(false);
-				}
-			}
-		};
+  const product = useMemo(
+    () => (data.product ?? []).map(normalizeProduct),
+    [data]
+  );
+  const farmers = useMemo(
+    () => (data.farmers ?? []).map(normalizeFarmer),
+    [data]
+  );
+  const products = data.products ?? [];
+  const shopProducts = data.shopProducts ?? [];
 
-		getProduct();
+  const refetch = useCallback(() => setData({ ...db }), []);
 
-		return () => {
-			isMounted = false;
-		};
-	}, [url, reload]);
-
-	const refetch = useCallback(() => {
-		setReload((prev) => prev + 1);
-	}, []);
-
-	return (
-		<FetchContext.Provider value={{ product, loading, error, refetch }}>
-			{children}
-		</FetchContext.Provider>
-	);
+  return (
+    <FetchContext.Provider
+      value={{
+        product,
+        farmers,
+        products,
+        shopProducts,
+        loading: false,
+        error: null,
+        refetch,
+      }}
+    >
+      {children}
+    </FetchContext.Provider>
+  );
 }
