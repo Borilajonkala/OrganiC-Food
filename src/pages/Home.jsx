@@ -5,7 +5,7 @@ import bgImgtwo from '../assets/bgimgtwo.png'
 import latterbox from '../assets/latterbox.svg'
 import leaf from '../assets/leaf.svg'
 import limon from '../assets/Limon.png'
-// rasmlar
+
 
 import { useFetchContext } from '../Context/useFetchContext'
 import { Link, useSearchParams } from 'react-router-dom'
