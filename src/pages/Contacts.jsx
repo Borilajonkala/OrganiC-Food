@@ -5,7 +5,6 @@ import barg from '../assets/barg.png'
 import { Mail, PhoneCall, MapPin } from 'lucide-react'
 
 const Contacts = () => {
-    // 1. Formadagi ma'lumotlarni saqlash uchun React State
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -13,20 +12,13 @@ const Contacts = () => {
         subject: '',
         message: ''
     });
-
-    // 2. Inputlarga biror narsa yozilganda holatni yangilab boruvchi funksiya
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-
-    // 3. Send Message tugmasi bosilganda Telegramga xabar yuborish funksiyasi
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const telegramToken = '9159236976:AAHi2Mi_Zy27tojYtGNPqNT_EstRcJQihqQ'; // Sizning bot tokeningiz
         const chatId = '5012910966'; // Sizning Telegram ID raqamingiz
-
-        // Botga boradigan xabarning chiroyli ko'rinishi
         const text = `📩 Saytdan yangi murojaat!\n\n` +
                      `👤 F.I.Sh: ${formData.fullName}\n` +
                      `📧 Email: ${formData.email}\n` +
@@ -35,7 +27,6 @@ const Contacts = () => {
                      `💬 Xabar: ${formData.message}`;
 
         const url = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
-
         try {
             const response = await fetch(url, {
                 method: 'POST',
@@ -45,10 +36,8 @@ const Contacts = () => {
                     text: text,
                 }),
             });
-
             if (response.ok) {
                 alert('Xabaringiz Ibrohimga muvaffaqiyatli yuborildi! 👍');
-                // Xabar muvaffaqiyatli ketgandan keyin formani tozalab qo'yamiz
                 setFormData({ fullName: '', email: '', company: '', subject: '', message: '' });
             } else {
                 alert('Xabarni yuborishda xatolik yuz berdi. Qayta urinib ko‘ring.');
