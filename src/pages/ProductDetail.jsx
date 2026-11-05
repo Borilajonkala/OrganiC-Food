@@ -5,13 +5,11 @@ import { useFetchContext } from '../Context/useFetchContext'
 const ProductDetail = () => {
     const { id } = useParams()
 
-    const { product, loading, error } = useFetchContext()
+    const { product,  } = useFetchContext()
 
-    const item = product?.find((e) => String(e.id) === id)
+    const item = (products ?? []).find((e) => String(e.id) === id)
 
-    if (loading) return <h1>Loading...</h1>
-    if (error) return <h1>{error}</h1>
-    if (!item) return <h1>Product not found</h1>
+    if (!item) return <p className="container mx-auto p-10">Product topilmadi</p>
 
     return (
         <div className="container mx-auto p-10">
@@ -19,22 +17,30 @@ const ProductDetail = () => {
 
                 <img
                     src={item.image}
-                    alt={item.title}
+                    alt={item.name}
                     className="w-80 h-80 object-contain"
                 />
 
                 <div>
                     <h1 className="text-3xl font-bold">
-                        {item.title}
+                        {item.name}
                     </h1>
 
                     <p className="text-xl mt-4">
-                        ${item.Price}
+                        ${item.price}
                     </p>
 
-                    <p className="mt-4">
-                        {item.description}
-                    </p>
+                    {item.price != null && (
+                        <p className="text-xl mt-4">
+                            ${Number(item.price).toFixed(2)}
+                        </p>
+                    )}
+
+                    {item.description && (
+                        <p className="mt-4">
+                            {item.description}
+                        </p>
+                    )}
                 </div>
 
             </div>

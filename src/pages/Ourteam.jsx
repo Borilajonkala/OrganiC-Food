@@ -1,40 +1,17 @@
-import React, { useState, useEffect } from 'react'
-
 import ourteamImage from '../assets/Ourteam.png'
-import farmerImage from '../assets/farmer.jpg'
 import Followimage from '../assets/Follow.png'
-import designerImage from '../assets/Mary.jpg'
-import RigaImage from '../assets/Riga.jpg'
-import KeiraImage from '../assets/Kira.jpg'
-import scottImage from '../assets/scott.jpg'
-import KarenImage from '../assets/Karen.jpg'
+import { useFetchContext } from '../Context/useFetchContext'
 
-const images = {
-    farmer: farmerImage,
-    designer: designerImage,
-    riga: RigaImage,
-    keira: KeiraImage,
-    scott: scottImage,
-    karen: KarenImage,
-}
+const Ourteam = ({ search }) => {
+    const { farmers, loading } = useFetchContext()
 
-const Ourteam = () => {
+    const query = (search || '').trim().toLowerCase()
 
-    const [team, setTeam] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        fetch('http://localhost:3000/team')
-            .then(res => res.json())
-            .then(data => {
-                setTeam(data)
-                setLoading(false)
-            })
-            .catch(error => {
-                console.log(error)
-                setLoading(false)
-            })
-    }, [])
+    const team = (farmers || []).filter(
+        (item) =>
+            item.name?.toLowerCase().includes(query) ||
+            item.job?.toLowerCase().includes(query)
+    )
 
     return (
         <main>
@@ -68,9 +45,13 @@ const Ourteam = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full justify-items-center">
 
-                    {loading ? (
-                        <p>Loading...</p>
-                    ) : (
+                    {loading && <p>Loading...</p>}
+
+                    {!loading && team.length === 0 && (
+                        <p className="text-slate-500">No team members found.</p>
+                    )}
+
+                    {!loading &&
                         team.map((item) => (
                             <div
                                 key={item.id}
@@ -79,7 +60,7 @@ const Ourteam = () => {
 
                                 <figure className="w-full h-80 bg-slate-200">
                                     <img
-                                        src={images[item.image]}
+                                        src={item.image}
                                         alt={item.name}
                                         className="w-full h-full object-cover"
                                     />
@@ -104,8 +85,7 @@ const Ourteam = () => {
 
                                 </div>
                             </div>
-                        ))
-                    )}
+                        ))}
 
                 </div>
             </section>
