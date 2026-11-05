@@ -1,8 +1,4 @@
 import banner from '../assets/banner.png'
-<<<<<<< HEAD
-=======
-
->>>>>>> f9e3ce1be26ba6bf2d7d27878a222113447fc490
 import broc from '../assets/broc.png'
 import banan from '../assets/banan.png'
 import or from '../assets/or.png'
@@ -13,12 +9,6 @@ import { useCart } from '../Context/CartContext'
 import { useState } from 'react'
 
 const ShopSingle = () => {
-<<<<<<< HEAD
-    const { shopProducts, loading, error } = useFetchContext()
-    const { id } = useParams()
-
-    const productID = (shopProducts ?? []).find(
-=======
     const { addToCart } = useCart()
     const [quantity, setQuantity] = useState(1)
     const { product , loading , error , } = useFetchContext()
@@ -27,7 +17,6 @@ const ShopSingle = () => {
 
     
       const productID = product.find(
->>>>>>> f9e3ce1be26ba6bf2d7d27878a222113447fc490
         (item) => String(item.id) === id
     )
 
@@ -73,30 +62,6 @@ const ShopSingle = () => {
                         </div>
 
                         <div className="flex items-center gap-4 text-xl font-bold">
-<<<<<<< HEAD
-                            {Number(productID.oldPrice) > Number(productID.price) && (
-                                <span className="text-gray-400 line-through text-lg">
-                                    ${Number(productID.oldPrice).toFixed(2)}
-                                </span>
-                            )}
-                            <span className="text-[#274c5b]">
-                                ${Number(productID.price ?? 0).toFixed(2)}
-                            </span>
-                        </div>
-
-                        <div className="flex items-center gap-4 mt-4">
-                            <span className="font-semibold text-[#274c5b]">Quantity :</span>
-                            <input
-                                type="number"
-                                defaultValue="1"
-                                min="1"
-                                className="w-20 text-center border border-gray-300 rounded-xl py-2 px-3 focus:outline-none focus:border-[#274c5b]"
-                            />
-                            <button className="btn bg-[#274c5b] hover:bg-[#1e3a45] text-white border-none px-6 py-2 rounded-xl flex items-center gap-2 cursor-pointer">
-                                Add To Cart ➔
-                            </button>
-                        </div>
-=======
                             {productID.oldPrice && (
                                 <span className="text-gray-400 line-through text-lg">${productID.oldPrice}</span>
                             )}
@@ -132,7 +97,6 @@ const ShopSingle = () => {
     Add To Cart ➔
   </button>
 </div>
->>>>>>> f9e3ce1be26ba6bf2d7d27878a222113447fc490
                     </div>
                 </div>
 

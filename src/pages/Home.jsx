@@ -11,7 +11,6 @@ import OrganicJuise from '../assets/OrganicJuise.png'
 import OrganicFood from '../assets/salatee.png'
 import SalatLeafs from '../assets/SalatLeaf.png'
 import Tometos from '../assets/Tomato.png'
-// rasmlar
 
 import AOS  from 'aos'
 import 'aos/dist/aos.css'

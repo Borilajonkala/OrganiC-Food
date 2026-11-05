@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
 	"product": [
 		{
@@ -69,7 +70,76 @@
 }
 =======
 	],	
+=======
+>>>>>>> d6598a50263087552484cf67687755aee4189d0d
 
+{
+  "product": [
+    {
+      "id": 1,
+      "title": "Calabrese Broccoli",
+      "prevPrice": 20.00,
+      "price": 13.00,
+      "type": "Vegetable",
+      "img": "/src/assets/rasm12.png"
+    },
+    {
+      "id": 2,
+      "title": "Fresh Banana Fruites",
+      "prevPrice": 20.00,
+      "price": 14.00,
+      "type": "Fresh",
+      "img": "/src/assets/rasm22.png"
+    },
+    {
+      "id": 3,
+      "title": "White Nuts",
+      "prevPrice": 20.00,
+      "price": 15.00,
+      "type": "Millets",
+      "img": "/src/assets/rasm21.png"
+    },
+    {
+      "id": 4,
+      "title": "Vegan Red Tomato",
+      "prevPrice": 20.00,
+      "price": 17.00,
+      "type": "Vegetable",
+      "img": "/src/assets/rasm20.png"
+    },
+    {
+      "id": 5,
+      "title": "Mung Bean",
+      "prevPrice": 20.00,
+      "price": 11.00,
+      "type": "Health",
+      "img": "/src/assets/rasm19.png"
+    },
+    {
+      "id": 6,
+      "title": "Brown Hazelnut",
+      "prevPrice": 20.00,
+      "price": 12.00,
+      "type": "Nuts",
+      "img": "/src/assets/rasm18.png"
+    },
+    {
+      "id": 7,
+      "title": "Eggs",
+      "prevPrice": 20.00,
+      "price": 17.00,
+      "type": "Fresh",
+      "img": "/src/assets/rasm17.png"
+    },
+    {
+      "id": 8,
+      "title": "Zelco Suji Elaichi Rusk",
+      "prevPrice": 20.00,
+      "price": 15.00,
+      "type": "Fresh",
+      "img": "/src/assets/rasm16.png"
+    }
+  ],
   "farmers": [
     {
       "id": 1,
@@ -107,7 +177,76 @@
       "job": "Farmer",
       "image": "/src/assets/Karen.jpg"
     }
+  ],
+  "shopProducts": [
+    {
+      "id": 1,
+      "title": "Calabrese Broccoli",
+      "prevPrice": 20.00,
+      "price": 13.00,
+      "type": "Vegetable",
+      "img": "https://api.cabinet.smart-market.uz/uploads/images/ff8081819defa40e616d51df"
+    },
+    {
+      "id": 2,
+      "title": "Fresh Banana Fruites",
+      "prevPrice": 20.00,
+      "price": 14.00,
+      "type": "Fresh",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNu3kx0Y9Mc4KwIYaX_NykA5S6pUeMC44OeH5r9gA0y3X-LE7-oQSbAv0&s=10"
+    },
+    {
+      "id": 3,
+      "title": "White Nuts",
+      "prevPrice": 20.00,
+      "price": 15.00,
+      "type": "Millets",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQioLfQSKMIuteUTjjmzgt0fmbBWAK7u5M55xtkH5BMvdDh8zZ44KrcVaf0&s=10"
+    },
+    {
+      "id": 4,
+      "title": "Vegan Red Tomato",
+      "prevPrice": 20.00,
+      "price": 17.00,
+      "type": "Vegetable",
+      "img": "https://seedie.ie/cdn/shop/files/yxDjtZ1KVY_600x.jpg?v=1768309004"
+    },
+    {
+      "id": 5,
+      "title": "Mung Bean",
+      "prevPrice": 20.00,
+      "price": 11.00,
+      "type": "Health",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKTNh854HmF69WQsiYaA1wRV-H5ZrZo1VMiYBZkL02AfQOPoNUR4A7twI&s=10"
+    },
+    {
+      "id": 6,
+      "title": "Brown Hazelnut",
+      "prevPrice": 20.00,
+      "price": 12.00,
+      "type": "Nuts",
+      "img": "https://www.freyabadi.com/hubfs/top-view-delicious-hazelnut-chocolate.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Eggs",
+      "prevPrice": 20.00,
+      "price": 17.00,
+      "type": "Fresh",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3AQnUqCcXKqlFhqr4F4lALbu0SpBnr_WLGVt9jAbYdOwwMTSN9ZH_0Rmz&s=10"
+    },
+    {
+      "id": 8,
+      "title": "Zelco Suji Elaichi Rusk",
+      "prevPrice": 20.00,
+      "price": 15.00,
+      "type": "Fresh",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaLRtzCNjjUkrLo7SvecvodZqw_lG6Hq4fwnXD9qMkAw&s=10"
+    }
   ]
 }
+<<<<<<< HEAD
 
 >>>>>>> f9e3ce1be26ba6bf2d7d27878a222113447fc490:db.json
+=======
+>>>>>>> d6598a50263087552484cf67687755aee4189d0d

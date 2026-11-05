@@ -5,11 +5,7 @@ import { useFetchContext } from '../Context/useFetchContext'
 const ProductDetail = () => {
     const { id } = useParams()
 
-<<<<<<< HEAD
-    const { products, loading, error } = useFetchContext()
-=======
     const { product,  } = useFetchContext()
->>>>>>> f9e3ce1be26ba6bf2d7d27878a222113447fc490
 
     const item = (products ?? []).find((e) => String(e.id) === id)
 
@@ -30,13 +26,8 @@ const ProductDetail = () => {
                         {item.name}
                     </h1>
 
-<<<<<<< HEAD
-                    <p className="mt-2 font-semibold text-[#7EB693]">
-                        {item.category}
-=======
                     <p className="text-xl mt-4">
                         ${item.price}
->>>>>>> f9e3ce1be26ba6bf2d7d27878a222113447fc490
                     </p>
 
                     {item.price != null && (
