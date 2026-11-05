@@ -27,7 +27,7 @@ const Home = ({ search }) => {
 	const filteredProduct = (product || []).filter(
 		item =>
 			item.title?.toLowerCase().includes(query) ||
-			item.category?.toLowerCase().includes(query),
+			item.category?.toLowerCase().includes(query)
 	)
 
 	console.log(product)
@@ -196,9 +196,9 @@ const Home = ({ search }) => {
 						))}
 
 						<Link to={'/about'}>
-							{' '}
+							
 							<button className='bg-kok hover:bg-kokrangHover text-[20px] text-oqrang font-bold py-[20px] px-[40px] rounded-3xl'>
-								Load More{' '}
+								Load More
 							</button>
 						</Link>
 					</div>
@@ -263,7 +263,7 @@ const Home = ({ search }) => {
 				className='relative max-h-[931px] overflow-hidden '
 				data-aos='fade-up'
 			>
-				<div className=''>
+				<div>
 					<img className='w-[50%] object-contain h-full' src={garden} alt='' />
 				</div>
 				<div className='absolute top-[100px] max-w-[700px] p-[30px] right-[260px] bg-white rounded-[30px]'>
