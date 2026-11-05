@@ -1,14 +1,68 @@
-import React from 'react'
+import { useState } from 'react'
 import apelsin2 from '../assets/apelsin2.png'
 import bana from '../assets/banana.png'
 import barg from '../assets/barg.png'
 import { Mail, PhoneCall, MapPin } from 'lucide-react'
 
 const Contacts = () => {
+    // 1. Formadagi ma'lumotlarni saqlash uchun React State
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        company: '',
+        subject: '',
+        message: ''
+    });
+
+    // 2. Inputlarga biror narsa yozilganda holatni yangilab boruvchi funksiya
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    // 3. Send Message tugmasi bosilganda Telegramga xabar yuborish funksiyasi
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const telegramToken = '9159236976:AAHi2Mi_Zy27tojYtGNPqNT_EstRcJQihqQ'; // Sizning bot tokeningiz
+        const chatId = '5012910966'; // Sizning Telegram ID raqamingiz
+
+        // Botga boradigan xabarning chiroyli ko'rinishi
+        const text = `📩 Saytdan yangi murojaat!\n\n` +
+                     `👤 F.I.Sh: ${formData.fullName}\n` +
+                     `📧 Email: ${formData.email}\n` +
+                     `🏢 Kompaniya: ${formData.company}\n` +
+                     `📌 Mavzu: ${formData.subject}\n` +
+                     `💬 Xabar: ${formData.message}`;
+
+        const url = `https://api.telegram.org/bot${telegramToken}/sendMessage`;
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: text,
+                }),
+            });
+
+            if (response.ok) {
+                alert('Xabaringiz Ibrohimga muvaffaqiyatli yuborildi! 👍');
+                // Xabar muvaffaqiyatli ketgandan keyin formani tozalab qo'yamiz
+                setFormData({ fullName: '', email: '', company: '', subject: '', message: '' });
+            } else {
+                alert('Xabarni yuborishda xatolik yuz berdi. Qayta urinib ko‘ring.');
+            }
+        } catch (error) {
+            console.error('Xatolik:', error);
+            alert('Tarmoq ulanishida xatolik yuz berdi.');
+        }
+    };
+
     return (
         <div>
             <div className="w-full mx-auto">
-                <div className="h-[450px] bg-cover bg-center bg-no-repeat flex items-center justify-center" style={{ backgroundImage: `url(${apelsin2})` }} xxx>
+                <div className="h-[450px] bg-cover bg-center bg-no-repeat flex items-center justify-center" style={{ backgroundImage: `url(${apelsin2})` }}>
                     <h1 className="text-[#274C5B] text-5xl md:text-7xl font-extrabold tracking-tight font-sans">
                         Contact Us
                     </h1>
@@ -55,7 +109,7 @@ const Contacts = () => {
             </section>
             <section>
                 <div className="w-full mx-auto">
-                    <div className="h-[650px] bg-cover bg-center bg-no-repeat flex items-center justify-center" style={{ backgroundImage: `url(${barg})` }} xxx>
+                    <div className="h-[650px] bg-cover bg-center bg-no-repeat flex items-center justify-center" style={{ backgroundImage: `url(${barg})` }}>
                         <div className=" ml-[800px] max-w-[450px] bg-white p-12 rounded-[40px] shadow-sm border border-gray-100/50">
                             <div className="mb-6">
                                 <span className="text-[#7BB87B] text-2xl font-serif italic block mb-1">
@@ -97,54 +151,97 @@ const Contacts = () => {
                                         </p>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
             <section>
-                <div className="w-full max-w-[1200px] mx-auto p-4 md:p-10 bg-[tarnsparent]">
-                    <form className="space-y-7">
+                <div className="w-full max-w-[1200px] mx-auto p-4 md:p-10 bg-[transparent]">
+                    <form onSubmit={handleSubmit} className="space-y-7">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="flex flex-col gap-3">
-                                <label className="text-[#274C5B] font-bold text-lg font-sans">
+                                <label htmlFor="fullName" className="text-[#274C5B] font-bold text-lg font-sans">
                                     Full Name*
                                 </label>
-                                <input type="text" placeholder="Your Email Address" className="w-full h-[65px] px-6 rounded-2xl border-2 border-gray-100 bg-white text-gray-700 placeholder-gray-300 italic focus:outline-none focus:border-[#7EB693] transition" required />
+                                <input
+                                    id="fullName"
+                                    type="text"
+                                    name="fullName"
+                                    placeholder="Your Full Name"
+                                    value={formData.fullName}
+                                    onChange={handleChange}
+                                    className="w-full h-[65px] px-6 rounded-2xl border-2 border-gray-100 bg-white text-gray-700 placeholder-gray-300 italic focus:outline-none focus:border-[#7EB693] transition"
+                                    required
+                                />
                             </div>
                             <div className="flex flex-col gap-3">
-                                <label className="text-[#274C5B] font-bold text-lg font-sans">
+                                <label htmlFor="email" className="text-[#274C5B] font-bold text-lg font-sans">
                                     Your Email*
                                 </label>
-                                <input type="email" placeholder="example@yourmail.com" className="w-full h-[65px] px-6 rounded-2xl border-2 border-gray-100 bg-white text-gray-700 placeholder-gray-300 italic focus:outline-none focus:border-[#7EB693] transition" required />
+                                <input
+                                    id="email"
+                                    type="email"
+                                    name="email"
+                                    placeholder="Your Email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    className="w-full h-[65px] px-6 rounded-2xl border-2 border-gray-100 bg-white text-gray-700 placeholder-gray-300 italic focus:outline-none focus:border-[#7EB693] transition"
+                                    required
+                                />
                             </div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="flex flex-col gap-3">
-                                <label className="text-[#274C5B] font-bold text-lg font-sans">
+                                <label htmlFor="company" className="text-[#274C5B] font-bold text-lg font-sans">
                                     Company*
                                 </label>
-                                <input type="text" placeholder="yourcompany name here" className="w-full h-[65px] px-6 rounded-2xl border-2 border-gray-100 bg-white text-gray-700 placeholder-gray-300 italic focus:outline-none focus:border-[#7EB693] transition" required />
+                                <input
+                                    id="company"
+                                    type="text"
+                                    name="company"
+                                    placeholder="Your Company"
+                                    value={formData.company}
+                                    onChange={handleChange}
+                                    className="w-full h-[65px] px-6 rounded-2xl border-2 border-gray-100 bg-white text-gray-700 placeholder-gray-300 italic focus:outline-none focus:border-[#7EB693] transition"
+                                    required
+                                />
                             </div>
                             <div className="flex flex-col gap-3">
-                                <label className="text-[#274C5B] font-bold text-lg font-sans">
+                                <label htmlFor="subject" className="text-[#274C5B] font-bold text-lg font-sans">
                                     Subject*
                                 </label>
-                                <input type="text" placeholder="how can we help" className="w-full h-[65px] px-6 rounded-2xl border-2 border-gray-100 bg-white text-gray-700 placeholder-gray-300 italic focus:outline-none focus:border-[#7EB693] transition" required />
+                                <input
+                                    id="subject"
+                                    type="text"
+                                    name="subject"
+                                    placeholder="Your Subject"
+                                    value={formData.subject}
+                                    onChange={handleChange}
+                                    className="w-full h-[65px] px-6 rounded-2xl border-2 border-gray-100 bg-white text-gray-700 placeholder-gray-300 italic focus:outline-none focus:border-[#7EB693] transition"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="flex flex-col gap-3">
-                            <label className="text-[#274C5B] font-bold text-lg font-sans">
+                            <label htmlFor="message" className="text-[#274C5B] font-bold text-lg font-sans">
                                 Message*
                             </label>
-                            <textarea rows="7" placeholder="hello there,i would like to talk about how to..." className="w-full px-6 py-5 rounded-2xl border-2 border-gray-100 bg-white text-gray-700 placeholder-gray-300 italic focus:outline-none focus:border-[#7EB693] transition resize-none" required></textarea>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="6"
+                                placeholder="Write your message here..."
+                                value={formData.message}
+                                onChange={handleChange}
+                                className="w-full p-6 rounded-2xl border-2 border-gray-100 bg-white text-gray-700 placeholder-gray-300 italic focus:outline-none focus:border-[#7EB693] transition resize-none"
+                                required
+                            />
                         </div>
-                        <div className="pt-2">
-                            <button type="submit" className="px-10 py-5 bg-[#274C5B] hover:bg-[#1e3b47] text-white font-bold text-lg rounded-2xl shadow-sm transition active:scale-[0.98]"> Send Message
-                            </button>
-                        </div>
+                        <button
+                            type="submit"
+                            className="px-10 h-[60px] rounded-2xl bg-[#274C5B] text-white font-bold text-lg font-sans hover:bg-[#1d3a45] transition"
+                        >
+                            Send Message
+                        </button>
                     </form>
                 </div>
             </section>
