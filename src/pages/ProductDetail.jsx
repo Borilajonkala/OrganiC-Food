@@ -4,11 +4,11 @@ import { useFetchContext } from '../Context/useFetchContext'
 const ProductDetail = () => {
   const { id } = useParams()
 
-  const { products, loading, errors } = useFetchContext()
+    const { product,  } = useFetchContext()
 
-  const item = products.find((product) => String(product.id) === id)
+    const item = (products ?? []).find((e) => String(e.id) === id)
 
-  if (loading) return <p className="container mx-auto py-10">Loading...</p>
+    if (!item) return <p className="container mx-auto p-10">Product topilmadi</p>
 
   if (errors.products)
     return <p className="container mx-auto py-10">{errors.products}</p>

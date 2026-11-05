@@ -7,12 +7,106 @@
 	--font-yellowtail: 'Yellowtail', cursive
 }
 @theme {
-	--color-kok: #274C5B;
+	--color-kok: #273C5B;
 	--color-yashil: #7EB693;
 	--color-sariq: #EFD372;
 	--color-Ochkulrang: #D4D4D4;
 	--color-oqrang: #F9F8F8;
 	--color-sutrang: #EFF6F1;
-	--color-qorarang: #525C60
+	--color-qorarang: #525C60;
+	--color-kokrangHover: #274C5B;
+}
+
+/* 404 sahifa animatsiyalari */
+@theme {
+	--animate-nf-rise: nf-rise 0.8s ease-out both;
+	--animate-nf-shimmer: nf-shimmer 9s linear infinite;
+	--animate-nf-glitch: nf-glitch 6s steps(1, end) infinite;
+	--animate-nf-drift-a: nf-drift-a 18s ease-in-out infinite alternate;
+	--animate-nf-drift-b: nf-drift-b 22s ease-in-out infinite alternate;
+	--animate-nf-float: nf-float 7s ease-in-out infinite;
+	--animate-nf-spin: nf-spin 60s linear infinite;
+
+	@keyframes nf-rise {
+		from {
+			opacity: 0;
+			transform: translateY(22px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes nf-shimmer {
+		0% {
+			background-position: 0% 50%;
+		}
+		100% {
+			background-position: 260% 50%;
+		}
+	}
+
+	@keyframes nf-glitch {
+		0%,
+		88%,
+		100% {
+			opacity: 0;
+			clip-path: inset(0 0 100% 0);
+			translate: 0 0;
+		}
+		90% {
+			opacity: 0.55;
+			clip-path: inset(18% 0 58% 0);
+			translate: -8px 0;
+		}
+		92% {
+			opacity: 0.4;
+			clip-path: inset(62% 0 16% 0);
+			translate: 7px 0;
+		}
+		94% {
+			opacity: 0.6;
+			clip-path: inset(36% 0 42% 0);
+			translate: -4px 0;
+		}
+		96% {
+			opacity: 0;
+		}
+	}
+
+	@keyframes nf-drift-a {
+		from {
+			transform: translate3d(0, 0, 0) scale(1);
+		}
+		to {
+			transform: translate3d(70px, 45px, 0) scale(1.15);
+		}
+	}
+
+	@keyframes nf-drift-b {
+		from {
+			transform: translate3d(0, 0, 0) scale(1.05);
+		}
+		to {
+			transform: translate3d(-60px, -50px, 0) scale(0.92);
+		}
+	}
+
+	@keyframes nf-spin {
+		to {
+			rotate: 360deg;
+		}
+	}
+
+	@keyframes nf-float {
+		0%,
+		100% {
+			transform: translateY(0) rotate(-4deg);
+		}
+		50% {
+			transform: translateY(-18px) rotate(4deg);
+		}
+	}
 }
 

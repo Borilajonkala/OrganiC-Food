@@ -1,9 +1,9 @@
-
 import { Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Shop from './pages/Shop'
 import ShopSingle from './pages/ShopSingle'
+import NotFound from './pages/NotFound'
 import BottomCom from './components/BottomCom'
 import Footer from './components/Footer'
 import Service from './pages/Service'
@@ -11,35 +11,51 @@ import Quality from './pages/Quality'
 import About from './pages/About'
 import Portifig from './pages/Portifig'
 import ProductDetail from './pages/ProductDetail'
+import Contacts from './pages/Contacts'
 import Licensens from './pages/Licensens'
 import Ourteam from './pages/Ourteam'
+import { useState } from 'react'
+import Cart from './pages/Cart'
 
 
 const App = () => {
-  return (
-    <div className='bg-oqrang text-kok'>
-      <Header />
+	const [search , setSearch] = useState('')
 
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/shop' element={<Shop />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/shop/shopsingle/:id' element={<ShopSingle />} />
-        <Route path='/home/shopsingle/:id' element={<ShopSingle />} />
-        <Route path='/quality' element={<Quality />} />
-        <Route path='/service' element={<Service />} />
-        <Route path='/licensens' element={<Licensens />} />
-        <Route path='/ourteam' element={<Ourteam />} />
-        <Route path='/projects' element={<Portifig />} />
-        <Route path='/projects/:id' element={<ProductDetail />} />
-      </Routes>
+	return (
+		<>
+			<div className='bg-oqrang text-kok'>
+				<Header search={search} setSearch={setSearch} />
 
-      <div className="container mx-auto p-4">
-        <BottomCom />
-        <Footer />
-      </div>
-    </div>
-  )
+					<Routes>
+						<Route path='/' element={<Home search={search} />} />
+						<Route path='/cart' element={<Cart />}/>
+						<Route path='/shop' element={<Shop search={search}/>} />
+						<Route path='/about' element={<About />} />
+						<Route path='/shop/shopsingle/:id' element={<ShopSingle />} />
+						<Route path='/home/shopsingle/:id' element={<ShopSingle />} />
+						<Route path='/quality' element={<Quality />} />
+						<Route path='/service' element={<Service />} />
+						<Route path='/contact' element={<Contacts/>}/>
+						<Route path='/licensens' element={<Licensens />} />
+						<Route path='/ourteam' element={<Ourteam  search={search}/>} />
+								<Route path='/projects' element={<Portifig search={search} />} />
+					<Route path='/projects/:id' element={<ProductDetail />} />
+						<Route path='*' element={<NotFound/>} />
+						{/* db json bitsa ulansa boldi */}
+						<Route path='/organicfood' />
+						<Route path='/organicjuice' />
+						<Route path='/nutscookis' />
+				</Routes>
+
+				<div className='container mx-auto p-4 '>
+					<div className='flex justify-center items-center'>
+							<BottomCom />
+					</div>
+				</div>
+					<Footer />
+			</div>
+		</>
+	)
 }
 
 export default App

@@ -1,13 +1,44 @@
-
-import { useState, useEffect, useCallback } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { FetchContext } from "./useFetchContext";
+import db from "../../db.json";
+
+const assetModules = import.meta.glob("../assets/*", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+
+const assetUrls = Object.entries(assetModules).reduce((acc, [path, url]) => {
+  acc[path.split("/").pop()] = url;
+  return acc;
+}, {});
+
+const resolveImage = (value) => {
+  if (!value) return "";
+  const fileName = String(value).split(/[\\/]/).pop();
+  return assetUrls[fileName] ?? value;
+};
+
+const normalizeProduct = (item) => ({
+  ...item,
+  title: item.title ?? item.name ?? "",
+  image: resolveImage(item.img ?? item.image ?? ""),
+  price: item.price ?? item.Price ?? 0,
+  oldPrice: item.prevPrice ?? item.oldPrice ?? null,
+  category: item.type ?? item.category ?? "",
+});
+
+const normalizeFarmer = (item) => ({
+  ...item,
+  name: item.name ?? "",
+  job: item.job ?? "",
+  image: resolveImage(item.image),
+});
 
 export function FetchProvider({ children }) {
-  const [product, setProduct] = useState([]);
-  const [farmers, setFarmers] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [shopProducts, setShopProducts] = useState([]);
+  const [data, setData] = useState(db);
 
+<<<<<<< HEAD
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [errors, setErrors] = useState({});
@@ -88,6 +119,20 @@ export function FetchProvider({ children }) {
     setErrors({});
     setReload((prev) => prev + 1);
   }, []);
+=======
+  const product = useMemo(
+    () => (data.product ?? []).map(normalizeProduct),
+    [data]
+  );
+  const farmers = useMemo(
+    () => (data.farmers ?? []).map(normalizeFarmer),
+    [data]
+  );
+  const products = data.products ?? [];
+  const shopProducts = data.shopProducts ?? [];
+
+  const refetch = useCallback(() => setData({ ...db }), []);
+>>>>>>> 0edf308de69059d7e36258a55e243f20593c272c
 
   return (
     <FetchContext.Provider
@@ -96,10 +141,16 @@ export function FetchProvider({ children }) {
         farmers,
         products,
         shopProducts,
+<<<<<<< HEAD
         loading,
         error,
         errors,
         refetch
+=======
+        loading: false,
+        error: null,
+        refetch,
+>>>>>>> 0edf308de69059d7e36258a55e243f20593c272c
       }}
     >
       {children}

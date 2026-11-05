@@ -5,15 +5,19 @@ import or from '../assets/or.png'
 import pomidor from '../assets/pomidor.png'
 import { useParams } from 'react-router-dom'
 import {  useFetchContext } from '../Context/useFetchContext'
+import { useCart } from '../Context/CartContext'
+import { useState } from 'react'
 
 const ShopSingle = () => {
-    const { product , loading , error } = useFetchContext()
+    const { addToCart } = useCart()
+    const [quantity, setQuantity] = useState(1)
+    const { product , loading , error , } = useFetchContext()
     const { id } = useParams()
 
 
     
       const productID = product.find(
-        (item) => item.id === id
+        (item) => String(item.id) === id
     )
 
     if (loading) return <p>Loading...</p>
@@ -40,40 +44,59 @@ const ShopSingle = () => {
                  
                     <div className='relative bg-gray-50 rounded-3xl p-8 shadow-sm flex justify-center items-center'>
                         <span className='absolute top-6 left-6 bg-[#274c5b] text-white text-xs font-semibold px-3 py-1.5 rounded-lg'>
-                            Millets
+                            {productID.category}
                         </span>
                         <img src={productID.image} alt="Health Pistachios" className='w-full max-w-md object-contain' />
                     </div>
 
                  
                     <div className="flex flex-col gap-4 max-w-xl">
-                        <h2 className="text-3xl font-bold text-[#274c5b]">{productID.title}</h2>
+                        <h2 className="text-3xl font-bold text-[#274c5b]">{productID.name}</h2>
 
                         <div className="flex items-center gap-1 text-orange-400 text-sm">
-                            <span>★★★★★</span>
+                            <span>
+                                {"★".repeat(
+                                    Math.min(5, Math.max(0, Number(productID.rating) || 0))
+                                )}
+                            </span>
                         </div>
 
                         <div className="flex items-center gap-4 text-xl font-bold">
-                            <span className="text-gray-400 line-through text-lg">$15.00</span>
-                            <span className="text-[#274c5b]">{productID.Price}</span>
+                            {productID.oldPrice && (
+                                <span className="text-gray-400 line-through text-lg">${productID.oldPrice}</span>
+                            )}
+                            <span className="text-[#274c5b]">{productID.price}</span>
                         </div>
 
                         <p className="text-gray-600 text-sm leading-relaxed">
                            {productID.desc}
                         </p>
 
-                        <div className="flex items-center gap-4 mt-4">
-                            <span className="font-semibold text-[#274c5b]">Quantity :</span>
-                            <input
-                                type="number"
-                                defaultValue="1"
-                                min="1"
-                                className="w-20 text-center border border-gray-300 rounded-xl py-2 px-3 focus:outline-none focus:border-[#274c5b]"
-                            />
-                            <button className="btn bg-[#274c5b] hover:bg-[#1e3a45] text-white border-none px-6 py-2 rounded-xl flex items-center gap-2 cursor-pointer">
-                                Add To Cart ➔
-                            </button>
-                        </div>
+                      <div className="flex items-center gap-4 mt-4">
+  <span className="font-semibold text-[#274c5b]">
+    Quantity:
+  </span>
+
+  <input
+    type="number"
+    min="1"
+    step="1"
+    value={quantity}
+    onChange={e => setQuantity(e.target.value)}
+    className="w-20 text-center border border-gray-300 rounded-xl py-2 px-3 focus:outline-none focus:border-[#274c5b]"
+  />
+
+  <button
+    type="button"
+    onClick={() => addToCart(productID, quantity)}
+    disabled={
+      !Number.isInteger(Number(quantity)) || Number(quantity) < 1
+    }
+    className="btn bg-[#274c5b] hover:bg-[#1e3a45] text-white border-none px-6 py-2 rounded-xl flex items-center gap-2 cursor-pointer disabled:opacity-50"
+  >
+    Add To Cart ➔
+  </button>
+</div>
                     </div>
                 </div>
 
@@ -83,7 +106,7 @@ const ShopSingle = () => {
                         <button className="btn bg-[#274c5b] hover:bg-[#1e3a45] text-white border-none px-6 py-2 rounded-xl flex items-center justify-center w-[249px] h-[42px] cursor-pointer">
                             Product Description
                         </button>
-                        <button className="btn bg-[#EFF6F1] hover:bg-[#e2ede5] text-black border-none w-[249px] h-[42px] rounded-xl cursor-pointer">
+                        <button className="btn bg-[#EFF6F1] hover:bg-[#e2ede5] text-black border-none w-62.25 h-10.5 rounded-xl cursor-pointer">
                             Additional Info
                         </button>
                     </div>
